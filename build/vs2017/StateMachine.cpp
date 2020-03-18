@@ -19,7 +19,7 @@ void StateMachine::init(gef::Platform& platform)
 	gameState = new GameState();
 
 
-	currentState = &*menuState;
+	currentState = &*gameState;
 	stateMachinePtr = this;
 
 	//currentState->init(platform);

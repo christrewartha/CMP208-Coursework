@@ -34,6 +34,7 @@ private:
 	void InitGround();
 	void SetupLights();
 	void UpdateSimulation(float frame_time);
+	void handleInput(gef::InputManager* input_manager_);
 
 
 	gef::Renderer3D* renderer_3d_;
@@ -47,7 +48,7 @@ private:
 	b2Body* player_body_;
 
 	// ground variables
-	gef::Mesh* ground_mesh_;
+	const gef::Mesh* ground_mesh_;
 	GameObject ground_;
 	b2Body* ground_body_;
 
