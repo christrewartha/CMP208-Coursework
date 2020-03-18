@@ -124,6 +124,12 @@ void GameState::InitPlayer()
 	// create the fixture on the rigid body
 	player_body_->CreateFixture(&player_fixture_def);
 
+	b2MassData playerMassData;
+	playerMassData.center = b2Vec2(0.0f, 0.0f);
+	playerMassData.mass = 60.f;
+	playerMassData.I = 1.0f;
+	player_body_->SetMassData(&playerMassData);
+
 	// update visuals from simulation data
 	player_.UpdateFromSimulation(player_body_);
 
@@ -134,7 +140,7 @@ void GameState::InitPlayer()
 void GameState::InitGround()
 {
 	// ground dimensions
-	gef::Vector4 ground_half_dimensions(5.0f, 0.05f, 5.0f);
+	gef::Vector4 ground_half_dimensions(5.0f, 0.1f, 0.1f);
 
 	// setup the mesh for the ground
 	ground_mesh_ = primitive_builder_->CreateBoxMesh(ground_half_dimensions);
@@ -154,6 +160,7 @@ void GameState::InitGround()
 	// create the fixture
 	b2FixtureDef fixture_def;
 	fixture_def.shape = &shape;
+	fixture_def.friction = 0.0f; // between 0 and 1
 
 	// create the fixture on the rigid body
 	ground_body_->CreateFixture(&fixture_def);
@@ -247,21 +254,16 @@ void GameState::handleInput(gef::InputManager* input_manager_)
 {
 	if (input_manager_->keyboard()->IsKeyDown(gef::Keyboard::KC_W))
 	{
-		player_body_->ApplyForceToCenter(b2Vec2(0.0f, 1.0f), true);
-	}
-
-	if (input_manager_->keyboard()->IsKeyDown(gef::Keyboard::KC_S))
-	{
-		player_body_->ApplyForceToCenter(b2Vec2(5.0f, 0.0f), true);
+		player_body_->ApplyLinearImpulseToCenter(b2Vec2(0.0f, 20.0f), true);
 	}
 
 	if (input_manager_->keyboard()->IsKeyDown(gef::Keyboard::KC_A))
 	{
-		player_body_->ApplyForceToCenter(b2Vec2(5.0f, 0.0f), true);
+		player_body_->ApplyForceToCenter(b2Vec2(-70.0f, 0.0f), true);
 	}
 
 	if (input_manager_->keyboard()->IsKeyDown(gef::Keyboard::KC_D))
 	{
-		player_body_->ApplyForceToCenter(b2Vec2(5.0f, 0.0f), true);
+		player_body_->ApplyForceToCenter(b2Vec2(70.0f, 0.0f), true);
 	}
 }
