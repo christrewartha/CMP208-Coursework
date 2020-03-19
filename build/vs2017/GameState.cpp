@@ -259,11 +259,11 @@ void GameState::handleInput(gef::InputManager* input_manager_)
 
 	if (input_manager_->keyboard()->IsKeyDown(gef::Keyboard::KC_A))
 	{
-		player_body_->ApplyForceToCenter(b2Vec2(-70.0f, 0.0f), true);
+		player_body_->ApplyForceToCenter(b2Vec2(-100.0f, 0.0f), true);
 	}
 
 	if (input_manager_->keyboard()->IsKeyDown(gef::Keyboard::KC_D))
 	{
-		player_body_->ApplyForceToCenter(b2Vec2(70.0f, 0.0f), true);
+		player_body_->ApplyForceToCenter(b2Vec2(100.0f, 0.0f), true);
 	}
 }
