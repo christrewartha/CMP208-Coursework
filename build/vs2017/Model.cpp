@@ -215,7 +215,7 @@ void Model::setCollider(b2World* world)
 	}
 
 	// Platforms that move by player collision
-	else if (name == "Prop_Block_Brick")
+	else if (name == "Prop_Crate")
 	{
 		bodyDef.type = b2_staticBody;
 		bodyDef.position = b2Vec2(position.x(), position.y());
