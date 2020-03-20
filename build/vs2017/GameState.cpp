@@ -51,14 +51,14 @@ void GameState::init(gef::Platform& platform_)
 	}
 
 	InitPlayer();
-	//InitGround();
+	InitGround();
 }
 
 void GameState::update(float frame_time, gef::InputManager* input_manager_, StateMachine* stateMachine)
 {
 	//const gef::SonyController* controller = input_manager_->controller_input()->GetController(0);
 
-	handleInput(input_manager_, frame_time);
+	handleInput(input_manager_);
 
 	UpdateSimulation(frame_time);
 
@@ -146,11 +146,8 @@ void GameState::InitPlayer()
 	b2BodyDef player_body_def;
 	player_body_def.type = b2_dynamicBody;
 	player_body_def.position = b2Vec2(35.0f, 18.0f);
-	player_body_def.linearDamping = 1.0f;
 
 	player_body_ = world_->CreateBody(&player_body_def);
-
-	player_body_->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
 
 	// create the shape for the player
 	//b2PolygonShape player_shape;
@@ -163,15 +160,14 @@ void GameState::InitPlayer()
 	b2FixtureDef player_fixture_def;
 	player_fixture_def.shape = &player_shape;
 	player_fixture_def.density = 1.0f;
-	player_fixture_def.friction = 0.2f;
-	player_fixture_def.restitution = 0.0f;
 
 	// create the fixture on the rigid body
 	player_body_->CreateFixture(&player_fixture_def);
 
 	b2MassData playerMassData;
 	playerMassData.center = b2Vec2(0.0f, 0.0f);
-	playerMassData.mass = 60.f;
+	//playerMassData.mass = 60.f;
+	playerMassData.mass = 40.f;
 	playerMassData.I = 1.0f;
 	player_body_->SetMassData(&playerMassData);
 
@@ -295,28 +291,21 @@ void GameState::UpdateSimulation(float frame_time)
 	}
 }
 
-void GameState::handleInput(gef::InputManager* input_manager_, float frame_time)
+void GameState::handleInput(gef::InputManager* input_manager_)
 {
-	b2Vec2 vel = player_body_->GetLinearVelocity();
-	float desiredVel = 0;
-
 	if (input_manager_->keyboard()->IsKeyDown(gef::Keyboard::KC_W))
 	{
-		//player_body_->ApplyLinearImpulseToCenter(b2Vec2(0.0f, 30.0f), true);
-
-		float impulse = player_body_->GetMass() * 30.0f;
-
-		player_body_->ApplyLinearImpulseToCenter(b2Vec2(0.0f, impulse * frame_time), true);
+		player_body_->ApplyLinearImpulseToCenter(b2Vec2(0.0f, 20.0f), true);
 	}
 
 	if (input_manager_->keyboard()->IsKeyDown(gef::Keyboard::KC_A))
 	{
-		player_body_->ApplyForceToCenter(b2Vec2(-500.0f, 0.0f), true);
+		player_body_->ApplyForceToCenter(b2Vec2(-100.0f, 0.0f), true);
 	}
 
 	if (input_manager_->keyboard()->IsKeyDown(gef::Keyboard::KC_D))
 	{
-		player_body_->ApplyForceToCenter(b2Vec2(500.0f, 0.0f), true);
+		player_body_->ApplyForceToCenter(b2Vec2(100.0f, 0.0f), true);
 	}
 }
 
