@@ -62,5 +62,8 @@ private:
 	Parser parser;
 
 	std::vector<Model> models;
+
+	const float CAMERA_OFFSET_Y = 10.0f;
+	const float CAMERA_OFFSET_Z = 20.0f;
 };
 

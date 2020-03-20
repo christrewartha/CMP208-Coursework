@@ -11,8 +11,8 @@ ScaleX: 3
 ScaleY: 1
 ScaleZ: 1
 SizeX: 3
-SizeY: 3
-SizeZ: 3
+SizeY: 1
+SizeZ: 1
 
 -
 ObjectNumber: 1
@@ -27,8 +27,8 @@ ScaleX: 3
 ScaleY: 1
 ScaleZ: 1
 SizeX: 3
-SizeY: 3
-SizeZ: 3
+SizeY: 1
+SizeZ: 1
 
 -
 ObjectNumber: 2
@@ -43,8 +43,8 @@ ScaleX: 3
 ScaleY: 1
 ScaleZ: 1
 SizeX: 3
-SizeY: 3
-SizeZ: 3
+SizeY: 1
+SizeZ: 1
 
 -
 ObjectNumber: 3
@@ -55,12 +55,12 @@ PositionZ: 0
 RotationX: 0
 RotationY: 0
 RotationZ: 0
-ScaleX: 4
+ScaleX: 4.5
 ScaleY: 1
 ScaleZ: 1
-SizeX: 8.550001
-SizeY: 8.550001
-SizeZ: 8.550001
+SizeX: 8.55
+SizeY: 1
+SizeZ: 2.9
 
 -
 ObjectNumber: 4
@@ -74,9 +74,9 @@ RotationZ: 0
 ScaleX: 3
 ScaleY: 1
 ScaleZ: 1
-SizeX: 5.700001
-SizeY: 5.700001
-SizeZ: 5.700001
+SizeX: 5.7
+SizeY: 1
+SizeZ: 2.9
 
 -
 ObjectNumber: 5
@@ -91,8 +91,8 @@ ScaleX: 2
 ScaleY: 1
 ScaleZ: 1
 SizeX: 3.8
-SizeY: 3.8
-SizeZ: 3.8
+SizeY: 1
+SizeZ: 2.9
 
 -
 ObjectNumber: 6
@@ -107,8 +107,8 @@ ScaleX: 31
 ScaleY: 1
 ScaleZ: 1
 SizeX: 31
-SizeY: 31
-SizeZ: 31
+SizeY: 1
+SizeZ: 1
 
 -
 ObjectNumber: 7
@@ -122,9 +122,9 @@ RotationZ: 0
 ScaleX: 1
 ScaleY: 1
 ScaleZ: 1
-SizeX: 2.282845
-SizeY: 2.282845
-SizeZ: 2.282845
+SizeX: 2.282843
+SizeY: 1.454497
+SizeZ: 2.2
 
 -
 ObjectNumber: 8
@@ -138,9 +138,9 @@ RotationZ: 0
 ScaleX: 1
 ScaleY: 1
 ScaleZ: 1
-SizeX: 1.353554
-SizeY: 1.353554
-SizeZ: 1.353554
+SizeX: 1.353553
+SizeY: 1.353553
+SizeZ: 2.2
 
 -
 ObjectNumber: 9
@@ -154,9 +154,9 @@ RotationZ: 0
 ScaleX: 1
 ScaleY: 1
 ScaleZ: 1
-SizeX: 1.353554
-SizeY: 1.353554
-SizeZ: 1.353554
+SizeX: 1.353553
+SizeY: 1.353553
+SizeZ: 2.2
 
 -
 ObjectNumber: 10
@@ -170,9 +170,9 @@ RotationZ: 0
 ScaleX: 1
 ScaleY: 1
 ScaleZ: 1
-SizeX: 1.353554
-SizeY: 1.353554
-SizeZ: 1.353554
+SizeX: 1.353553
+SizeY: 1.353553
+SizeZ: 2.2
 
 -
 ObjectNumber: 11
@@ -186,9 +186,9 @@ RotationZ: 0
 ScaleX: 1
 ScaleY: 1
 ScaleZ: 1
-SizeX: 1.353554
-SizeY: 1.353554
-SizeZ: 1.353554
+SizeX: 1.353553
+SizeY: 1.353553
+SizeZ: 2.2
 
 -
 ObjectNumber: 12
@@ -202,9 +202,9 @@ RotationZ: 0
 ScaleX: 1
 ScaleY: 1
 ScaleZ: 1
-SizeX: 1.353554
-SizeY: 1.353554
-SizeZ: 1.353554
+SizeX: 1.353553
+SizeY: 1.353553
+SizeZ: 2.2
 
 -
 ObjectNumber: 13
@@ -218,9 +218,9 @@ RotationZ: 0
 ScaleX: 1
 ScaleY: 1
 ScaleZ: 1
-SizeX: 1.353554
-SizeY: 1.353554
-SizeZ: 1.353554
+SizeX: 1.353553
+SizeY: 1.353553
+SizeZ: 2.2
 
 -
 ObjectNumber: 14
@@ -234,9 +234,9 @@ RotationZ: 0
 ScaleX: 1
 ScaleY: 1
 ScaleZ: 1
-SizeX: 1.353554
-SizeY: 1.353554
-SizeZ: 1.353554
+SizeX: 1.353553
+SizeY: 1.353553
+SizeZ: 2.2
 
 -
 ObjectNumber: 15
@@ -250,9 +250,9 @@ RotationZ: 0
 ScaleX: 1
 ScaleY: 1
 ScaleZ: 1
-SizeX: 1.353554
-SizeY: 1.353554
-SizeZ: 1.353554
+SizeX: 1.353553
+SizeY: 1.353553
+SizeZ: 2.2
 
 -
 ObjectNumber: 16
@@ -266,9 +266,9 @@ RotationZ: 0
 ScaleX: 1
 ScaleY: 1
 ScaleZ: 1
-SizeX: 1.353554
-SizeY: 1.353554
-SizeZ: 1.353554
+SizeX: 1.353553
+SizeY: 1.353553
+SizeZ: 2.2
 
 -
 ObjectNumber: 17
@@ -282,9 +282,9 @@ RotationZ: 0
 ScaleX: 1
 ScaleY: 1
 ScaleZ: 1
-SizeX: 1.353554
-SizeY: 1.353554
-SizeZ: 1.353554
+SizeX: 1.353553
+SizeY: 1.353553
+SizeZ: 2.2
 
 -
 ObjectNumber: 18
@@ -298,9 +298,9 @@ RotationZ: 0
 ScaleX: 1
 ScaleY: 1
 ScaleZ: 1
-SizeX: 1.353554
-SizeY: 1.353554
-SizeZ: 1.353554
+SizeX: 1.353553
+SizeY: 1.353553
+SizeZ: 2.2
 
 -
 ObjectNumber: 19
@@ -314,9 +314,9 @@ RotationZ: 0
 ScaleX: 1
 ScaleY: 1
 ScaleZ: 1
-SizeX: 1.353554
-SizeY: 1.353554
-SizeZ: 1.353554
+SizeX: 1.353553
+SizeY: 1.353553
+SizeZ: 2.2
 
 -
 ObjectNumber: 20
@@ -330,9 +330,9 @@ RotationZ: 0
 ScaleX: 1
 ScaleY: 1
 ScaleZ: 1
-SizeX: 1.353554
-SizeY: 1.353554
-SizeZ: 1.353554
+SizeX: 1.353553
+SizeY: 1.353553
+SizeZ: 2.2
 
 -
 ObjectNumber: 21
@@ -346,9 +346,9 @@ RotationZ: 0
 ScaleX: 1
 ScaleY: 1
 ScaleZ: 1
-SizeX: 1.353554
-SizeY: 1.353554
-SizeZ: 1.353554
+SizeX: 1.353553
+SizeY: 1.353553
+SizeZ: 2.2
 
 -
 ObjectNumber: 22
@@ -362,9 +362,9 @@ RotationZ: 0
 ScaleX: 1
 ScaleY: 1
 ScaleZ: 1
-SizeX: 1.353554
-SizeY: 1.353554
-SizeZ: 1.353554
+SizeX: 1.353553
+SizeY: 1.353553
+SizeZ: 2.2
 
 -
 ObjectNumber: 23
@@ -378,9 +378,9 @@ RotationZ: 0
 ScaleX: 1
 ScaleY: 1
 ScaleZ: 1
-SizeX: 2.070709
-SizeY: 2.070709
-SizeZ: 2.070709
+SizeX: 2.070711
+SizeY: 1.382843
+SizeZ: 2.2
 
 -
 ObjectNumber: 24
@@ -395,8 +395,8 @@ ScaleX: 99
 ScaleY: 1
 ScaleZ: 1
 SizeX: 99
-SizeY: 99
-SizeZ: 99
+SizeY: 1
+SizeZ: 1
 
 -
 ObjectNumber: 25
@@ -411,8 +411,8 @@ ScaleX: 3
 ScaleY: 1
 ScaleZ: 1
 SizeX: 3
-SizeY: 3
-SizeZ: 3
+SizeY: 1
+SizeZ: 1
 
 -
 ObjectNumber: 26
@@ -427,8 +427,8 @@ ScaleX: 7
 ScaleY: 1
 ScaleZ: 1
 SizeX: 7
-SizeY: 7
-SizeZ: 7
+SizeY: 1
+SizeZ: 1
 
 -
 ObjectNumber: 27
@@ -443,8 +443,8 @@ ScaleX: 7
 ScaleY: 1
 ScaleZ: 1
 SizeX: 7
-SizeY: 7
-SizeZ: 7
+SizeY: 1
+SizeZ: 1
 
 -
 ObjectNumber: 28
@@ -779,8 +779,8 @@ ScaleX: 2
 ScaleY: 3
 ScaleZ: 1
 SizeX: 2
-SizeY: 2
-SizeZ: 2
+SizeY: 3
+SizeZ: 1
 
 -
 ObjectNumber: 49
@@ -795,8 +795,8 @@ ScaleX: 16
 ScaleY: 1
 ScaleZ: 1
 SizeX: 16
-SizeY: 16
-SizeZ: 16
+SizeY: 1
+SizeZ: 1
 
 -
 ObjectNumber: 50
@@ -811,8 +811,8 @@ ScaleX: 7
 ScaleY: 1
 ScaleZ: 1
 SizeX: 7
-SizeY: 7
-SizeZ: 7
+SizeY: 1
+SizeZ: 1
 
 -
 ObjectNumber: 51
@@ -827,8 +827,8 @@ ScaleX: 2
 ScaleY: 3
 ScaleZ: 1
 SizeX: 2
-SizeY: 2
-SizeZ: 2
+SizeY: 3
+SizeZ: 1
 
 -
 ObjectNumber: 52
@@ -843,8 +843,8 @@ ScaleX: 2
 ScaleY: 1
 ScaleZ: 1
 SizeX: 2
-SizeY: 2
-SizeZ: 2
+SizeY: 1
+SizeZ: 1
 
 -
 ObjectNumber: 53
@@ -858,9 +858,9 @@ RotationZ: 0
 ScaleX: 2
 ScaleY: 1
 ScaleZ: 1
-SizeX: 3.800003
-SizeY: 3.800003
-SizeZ: 3.800003
+SizeX: 3.8
+SizeY: 1
+SizeZ: 2.9
 
 -
 ObjectNumber: 54
@@ -875,8 +875,8 @@ ScaleX: 10
 ScaleY: 1
 ScaleZ: 1
 SizeX: 10
-SizeY: 10
-SizeZ: 10
+SizeY: 1
+SizeZ: 1
 
 -
 ObjectNumber: 55
@@ -891,8 +891,8 @@ ScaleX: 3
 ScaleY: 1
 ScaleZ: 1
 SizeX: 3
-SizeY: 3
-SizeZ: 3
+SizeY: 1
+SizeZ: 1
 
 -
 ObjectNumber: 56
@@ -906,9 +906,9 @@ RotationZ: 0
 ScaleX: 3
 ScaleY: 1
 ScaleZ: 1
-SizeX: 5.699997
-SizeY: 5.699997
-SizeZ: 5.699997
+SizeX: 5.7
+SizeY: 1
+SizeZ: 2.9
 
 -
 ObjectNumber: 57
@@ -922,9 +922,9 @@ RotationZ: 0
 ScaleX: 3
 ScaleY: 1
 ScaleZ: 1
-SizeX: 5.699997
-SizeY: 5.699997
-SizeZ: 5.699997
+SizeX: 5.7
+SizeY: 1
+SizeZ: 2.9
 
 -
 ObjectNumber: 58
@@ -938,9 +938,9 @@ RotationZ: 0
 ScaleX: 2
 ScaleY: 1
 ScaleZ: 1
-SizeX: 3.799988
-SizeY: 3.799988
-SizeZ: 3.799988
+SizeX: 3.8
+SizeY: 1
+SizeZ: 2.9
 
 -
 ObjectNumber: 59
@@ -955,8 +955,8 @@ ScaleX: 5
 ScaleY: 1
 ScaleZ: 1
 SizeX: 5
-SizeY: 5
-SizeZ: 5
+SizeY: 1
+SizeZ: 1
 
 -
 ObjectNumber: 60
@@ -971,7 +971,7 @@ ScaleX: 1
 ScaleY: 22
 ScaleZ: 1
 SizeX: 1
-SizeY: 1
+SizeY: 27.5
 SizeZ: 1
 
 -
@@ -987,8 +987,8 @@ ScaleX: 53
 ScaleY: 1
 ScaleZ: 1
 SizeX: 53
-SizeY: 53
-SizeZ: 53
+SizeY: 1
+SizeZ: 1
 
 -
 ObjectNumber: 62
@@ -1003,8 +1003,8 @@ ScaleX: 152
 ScaleY: 1
 ScaleZ: 1
 SizeX: 152
-SizeY: 152
-SizeZ: 152
+SizeY: 1.25
+SizeZ: 1
 
 -
 ObjectNumber: 63
@@ -1016,10 +1016,10 @@ RotationX: 0
 RotationY: 0
 RotationZ: 0
 ScaleX: -1
-ScaleY: 22
+ScaleY: 21.6
 ScaleZ: 1
 SizeX: 1
-SizeY: 1
+SizeY: 27
 SizeZ: 1
 
 -
@@ -1035,8 +1035,8 @@ ScaleX: 3
 ScaleY: 2
 ScaleZ: 1
 SizeX: 3
-SizeY: 3
-SizeZ: 3
+SizeY: 2.5
+SizeZ: 1
 
 -
 ObjectNumber: 65
@@ -1051,8 +1051,8 @@ ScaleX: 3
 ScaleY: 4
 ScaleZ: 1
 SizeX: 3
-SizeY: 3
-SizeZ: 3
+SizeY: 5
+SizeZ: 1
 
 -
 ObjectNumber: 66
@@ -1067,8 +1067,8 @@ ScaleX: 3
 ScaleY: 6
 ScaleZ: 1
 SizeX: 3
-SizeY: 3
-SizeZ: 3
+SizeY: 7.5
+SizeZ: 1
 
 -
 ObjectNumber: 67
@@ -1083,8 +1083,8 @@ ScaleX: 3
 ScaleY: 2
 ScaleZ: 1
 SizeX: 3
-SizeY: 3
-SizeZ: 3
+SizeY: 2.5
+SizeZ: 1
 
 -
 ObjectNumber: 68
@@ -1096,10 +1096,10 @@ RotationX: 0
 RotationY: 0
 RotationZ: 0
 ScaleX: 1
-ScaleY: 10
+ScaleY: 10.4
 ScaleZ: 1
 SizeX: 1
-SizeY: 1
+SizeY: 13
 SizeZ: 1
 
 -
@@ -1112,11 +1112,11 @@ RotationX: 0
 RotationY: 0
 RotationZ: 0
 ScaleX: 11
-ScaleY: 2
+ScaleY: 1.55
 ScaleZ: 1
 SizeX: 11
-SizeY: 11
-SizeZ: 11
+SizeY: 1.9375
+SizeZ: 1
 
 -
 ObjectNumber: 70
@@ -1128,10 +1128,10 @@ RotationX: 0
 RotationY: 0
 RotationZ: 0
 ScaleX: 1
-ScaleY: 12
+ScaleY: 11.8
 ScaleZ: 1
 SizeX: 1
-SizeY: 1
+SizeY: 14.75
 SizeZ: 1
 
 -
@@ -1144,10 +1144,10 @@ RotationX: 0
 RotationY: 0
 RotationZ: 0
 ScaleX: 1
-ScaleY: 2
+ScaleY: 2.5
 ScaleZ: 1
 SizeX: 1
-SizeY: 1
+SizeY: 3.125
 SizeZ: 1
 
 -
@@ -1163,7 +1163,7 @@ ScaleX: 1
 ScaleY: 12
 ScaleZ: 1
 SizeX: 1
-SizeY: 1
+SizeY: 15
 SizeZ: 1
 
 -
@@ -1176,10 +1176,10 @@ RotationX: 0
 RotationY: 0
 RotationZ: 0
 ScaleX: 1
-ScaleY: 16
+ScaleY: 15.8
 ScaleZ: 1
 SizeX: 1
-SizeY: 1
+SizeY: 19.75
 SizeZ: 1
 
 -
@@ -1195,8 +1195,8 @@ ScaleX: 7
 ScaleY: 3
 ScaleZ: 1
 SizeX: 7
-SizeY: 7
-SizeZ: 7
+SizeY: 3.75
+SizeZ: 1
 
 -
 ObjectNumber: 75
@@ -1208,11 +1208,11 @@ RotationX: 0
 RotationY: 180
 RotationZ: 0
 ScaleX: 2
-ScaleY: 6
+ScaleY: 6.5
 ScaleZ: 1
 SizeX: 2
-SizeY: 2
-SizeZ: 2
+SizeY: 8.125
+SizeZ: 1
 
 -
 ObjectNumber: 76
@@ -1227,8 +1227,8 @@ ScaleX: 3
 ScaleY: 9
 ScaleZ: 1
 SizeX: 3
-SizeY: 3
-SizeZ: 3
+SizeY: 11.25
+SizeZ: 1
 
 -
 ObjectNumber: 77
@@ -1243,7 +1243,7 @@ ScaleX: 1
 ScaleY: 2
 ScaleZ: 1
 SizeX: 1
-SizeY: 1
+SizeY: 2.5
 SizeZ: 1
 
 -
@@ -1259,7 +1259,7 @@ ScaleX: 1
 ScaleY: 2
 ScaleZ: 1
 SizeX: 1
-SizeY: 1
+SizeY: 2.5
 SizeZ: 1
 
 -
@@ -1272,10 +1272,10 @@ RotationX: 0
 RotationY: 0
 RotationZ: 0
 ScaleX: 1
-ScaleY: 2
+ScaleY: 2.5
 ScaleZ: 1
 SizeX: 1
-SizeY: 1
+SizeY: 3.125
 SizeZ: 1
 
 -
@@ -1323,8 +1323,8 @@ ScaleX: 10
 ScaleY: 17
 ScaleZ: 1
 SizeX: 10
-SizeY: 10
-SizeZ: 10
+SizeY: 21.25
+SizeZ: 1
 
 -
 ObjectNumber: 83
@@ -1339,12 +1339,12 @@ ScaleX: 5
 ScaleY: 9
 ScaleZ: 1
 SizeX: 5
-SizeY: 5
-SizeZ: 5
+SizeY: 11.25
+SizeZ: 1
 
 -
 ObjectNumber: 84
-ObjectName: Terrain_Grass_Flat (1)
+ObjectName: Terrain_Grass_Flat
 PositionX: 45.5
 PositionY: 3
 PositionZ: 0
@@ -1354,10 +1354,13 @@ RotationZ: 0
 ScaleX: 3
 ScaleY: 3
 ScaleZ: 1
+SizeX: 3
+SizeY: 3.75
+SizeZ: 1
 
 -
 ObjectNumber: 85
-ObjectName: Terrain_Path_Flat (1)
+ObjectName: Terrain_Path_Flat
 PositionX: 45.5
 PositionY: 4.5
 PositionZ: 0
@@ -1367,4 +1370,7 @@ RotationZ: 0
 ScaleX: 3
 ScaleY: 1
 ScaleZ: 1
+SizeX: 3
+SizeY: 1
+SizeZ: 1
 

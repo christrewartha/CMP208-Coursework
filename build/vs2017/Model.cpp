@@ -25,7 +25,7 @@ void Model::init(PrimitiveBuilder* primitiveBuilder, gef::Scene* sceneAssets, ge
 	{
 		rotateMatrixY.RotationY(gef::DegToRad(rotation.y()));
 	}
-	
+
 	rotateMatrixZ.RotationZ(gef::DegToRad(-rotation.z()));
 	rotateMatrix = rotateMatrixX * rotateMatrixY * rotateMatrixZ;
 
@@ -41,7 +41,7 @@ void Model::init(PrimitiveBuilder* primitiveBuilder, gef::Scene* sceneAssets, ge
 
 	/*translateVect = gef::Vector4(0.0f, 0.0f, 0.0f);
 	translateMatrix.SetIdentity();
-	translateMatrix.SetTranslation(translateVect); 
+	translateMatrix.SetTranslation(translateVect);
 	set_transform(translateMatrix);*/
 
 
@@ -62,6 +62,8 @@ void Model::init(PrimitiveBuilder* primitiveBuilder, gef::Scene* sceneAssets, ge
 	}
 
 	body = NULL;
+
+	positionOffset = 0.0f;
 }
 
 void Model::update()
@@ -149,23 +151,171 @@ std::string Model::getName()
 
 void Model::setCollider(b2World* world)
 {
+	offsetBodyPositions();
+
+
+	// What the player walks on
 	if (name == "Terrain_Path_Flat")
 	{
 		bodyDef.type = b2_staticBody;
-		bodyDef.position = b2Vec2(position.x(), position.y());
+		bodyDef.position = b2Vec2(position.x(), position.y() - 0.5f);
 		body = world->CreateBody(&bodyDef);
 
-		//shape.SetAsBox(0.5f, 0.1f);
-		shape.SetAsBox(size.x() / 2, 0.1);
+		shape.SetAsBox(size.x() / 2, size.y() / 2);
 
 		fixtureDef.density = 1.0f;
 		fixtureDef.shape = &shape;
 		fixtureDef.friction = 0.5f; // between 0 and 1
 		body->CreateFixture(&fixtureDef);
+	}
 
-		massData.center = b2Vec2(0.0f, 0.0f);
-		massData.mass = 1.0f;
-		massData.I = 1.0f;
-		body->SetMassData(&massData);
+	// Edges of platforms
+	else if (name == "Terrain_Grass_Flat")
+	{
+		bodyDef.type = b2_staticBody;
+		bodyDef.position = b2Vec2(position.x(), position.y() - positionOffset);
+		body = world->CreateBody(&bodyDef);
+
+		shape.SetAsBox(size.x() / 2, size.y() / 2);
+
+		fixtureDef.density = 1.0f;
+		fixtureDef.shape = &shape;
+		fixtureDef.friction = 0.5f; // between 0 and 1
+		body->CreateFixture(&fixtureDef);
+	}
+
+	// Platforms that move
+	else if (name == "Prop_Block_2x3")
+	{
+		bodyDef.type = b2_staticBody;
+		bodyDef.position = b2Vec2(position.x() - positionOffset, position.y() + 0.5f);
+		body = world->CreateBody(&bodyDef);
+
+		shape.SetAsBox(size.x() / 2, size.y() / 2);
+
+		fixtureDef.density = 1.0f;
+		fixtureDef.shape = &shape;
+		fixtureDef.friction = 0.5f; // between 0 and 1
+		body->CreateFixture(&fixtureDef);
+	}
+
+	// Platforms that move by rope
+	else if (name == "Prop_Block_Brick")
+	{
+		bodyDef.type = b2_staticBody;
+		bodyDef.position = b2Vec2(position.x(), position.y() + positionOffset);
+		body = world->CreateBody(&bodyDef);
+
+		shape.SetAsBox(size.x() / 2, size.y() / 2);
+
+		fixtureDef.density = 1.0f;
+		fixtureDef.shape = &shape;
+		fixtureDef.friction = 0.5f; // between 0 and 1
+		body->CreateFixture(&fixtureDef);
+	}
+
+	// Platforms that move by player collision
+	else if (name == "Prop_Block_Brick")
+	{
+		bodyDef.type = b2_staticBody;
+		bodyDef.position = b2Vec2(position.x(), position.y());
+		body = world->CreateBody(&bodyDef);
+
+		shape.SetAsBox(size.x() / 2, size.y() / 2);
+
+		fixtureDef.density = 1.0f;
+		fixtureDef.shape = &shape;
+		fixtureDef.friction = 0.5f; // between 0 and 1
+		body->CreateFixture(&fixtureDef);
+	}
+}
+
+void Model::offsetBodyPositions()
+{
+	switch (number)
+	{
+
+	case 3:
+		positionOffset = 2.5f;
+		break;
+
+	case 4: case 53: case 56: case 57:
+		positionOffset = 1.55f;
+		break;
+
+	case 5: case 58:
+		positionOffset = 0.95f;
+		break;
+
+	case 48: case 51:
+		positionOffset = 1.5f;
+		break;
+
+	case 60:
+		positionOffset = 8.5f;
+		break;
+
+	case 63:
+		positionOffset = 8.0f;
+		break;
+
+	case 62:
+		positionOffset = 0.4f;
+		break;
+
+	case 65: case 74: case 77: case 78: case 84:
+		positionOffset = 1.0f;
+		break;
+
+	case 66:
+		positionOffset = 2.0f;
+		break;
+
+	case 67:
+		positionOffset = 0.5f;
+		break;
+
+	case 68:
+		positionOffset = 3.9f;
+		break;
+
+	case 69:
+		positionOffset = 0.65f;
+		break;
+
+	case 70:
+		positionOffset = 4.4f;
+		break;
+
+	case 71: case 79:
+		positionOffset = 0.9f;
+		break;
+
+	case 72:
+		positionOffset = 4.5f;
+		break;
+
+	case 73:
+		positionOffset = 5.9f;
+		break;
+
+	case 75:
+		positionOffset = 2.4f;
+		break;
+
+	case 76:
+		positionOffset = 3.35f;
+		break;
+
+	case 82:
+		positionOffset = 6.0f;
+		break;
+
+	case 83:
+		positionOffset = 3.5f;
+		break;
+
+	default:
+		break;
 	}
 }

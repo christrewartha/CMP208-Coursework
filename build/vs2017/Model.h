@@ -44,6 +44,7 @@ public:
 	std::string getName();
 
 	void setCollider(b2World* world);
+	void offsetBodyPositions();
 
 private:
 
@@ -76,4 +77,6 @@ private:
 	b2PolygonShape shape;
 	b2FixtureDef fixtureDef;
 	b2MassData massData;
+
+	float positionOffset;
 };

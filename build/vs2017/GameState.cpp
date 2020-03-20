@@ -5,6 +5,7 @@ GameState::GameState() :
 	world_(NULL),
 	player_body_(NULL)
 {
+	
 }
 
 GameState::~GameState()
@@ -80,8 +81,8 @@ void GameState::render(gef::SpriteRenderer* sprite_renderer_, gef::Font* font_, 
 	renderer_3d_->set_projection_matrix(projection_matrix);
 
 	// view
-	gef::Vector4 camera_eye(24.5f, 7.0f, 20.0f);
-	gef::Vector4 camera_lookat(24.5f, 3.5f, 0.5f);
+	gef::Vector4 camera_eye(player_body_->GetPosition().x, player_body_->GetPosition().y, CAMERA_OFFSET_Z);
+	gef::Vector4 camera_lookat(player_body_->GetPosition().x, player_body_->GetPosition().y, 0.0f);
 	gef::Vector4 camera_up(0.0f, 1.0f, 0.0f);
 	gef::Matrix44 view_matrix;
 	view_matrix.LookAt(camera_eye, camera_lookat, camera_up);
@@ -144,7 +145,7 @@ void GameState::InitPlayer()
 	// create a physics body for the player
 	b2BodyDef player_body_def;
 	player_body_def.type = b2_dynamicBody;
-	player_body_def.position = b2Vec2(24.5f, 5.5f);
+	player_body_def.position = b2Vec2(30.0f, 15.0f);
 
 	player_body_ = world_->CreateBody(&player_body_def);
 
@@ -165,7 +166,8 @@ void GameState::InitPlayer()
 
 	b2MassData playerMassData;
 	playerMassData.center = b2Vec2(0.0f, 0.0f);
-	playerMassData.mass = 60.f;
+	//playerMassData.mass = 60.f;
+	playerMassData.mass = 40.f;
 	playerMassData.I = 1.0f;
 	player_body_->SetMassData(&playerMassData);
 
