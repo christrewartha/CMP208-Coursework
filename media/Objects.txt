@@ -1,0 +1,1370 @@
+-
+ObjectNumber: 0
+ObjectName: Terrain_Path_Flat
+PositionX: 24.5
+PositionY: 3.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 3
+ScaleY: 1
+ScaleZ: 1
+SizeX: 3
+SizeY: 3
+SizeZ: 3
+
+-
+ObjectNumber: 1
+ObjectName: Terrain_Path_Flat
+PositionX: 30.5
+PositionY: 6
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 3
+ScaleY: 1
+ScaleZ: 1
+SizeX: 3
+SizeY: 3
+SizeZ: 3
+
+-
+ObjectNumber: 2
+ObjectName: Terrain_Path_Flat
+PositionX: 38.5
+PositionY: 8.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 3
+ScaleY: 1
+ScaleZ: 1
+SizeX: 3
+SizeY: 3
+SizeZ: 3
+
+-
+ObjectNumber: 3
+ObjectName: Prop_Block_2x3
+PositionX: 32
+PositionY: 13
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 4
+ScaleY: 1
+ScaleZ: 1
+SizeX: 8.550001
+SizeY: 8.550001
+SizeZ: 8.550001
+
+-
+ObjectNumber: 4
+ObjectName: Prop_Block_2x3
+PositionX: 17.5
+PositionY: 9
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 3
+ScaleY: 1
+ScaleZ: 1
+SizeX: 5.700001
+SizeY: 5.700001
+SizeZ: 5.700001
+
+-
+ObjectNumber: 5
+ObjectName: Prop_Block_2x3
+PositionX: 5
+PositionY: 13
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 2
+ScaleY: 1
+ScaleZ: 1
+SizeX: 3.8
+SizeY: 3.8
+SizeZ: 3.8
+
+-
+ObjectNumber: 6
+ObjectName: Terrain_Path_Flat
+PositionX: 19.5
+PositionY: 17.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 31
+ScaleY: 1
+ScaleZ: 1
+SizeX: 31
+SizeY: 31
+SizeZ: 31
+
+-
+ObjectNumber: 7
+ObjectName: Prop_Slide_Top
+PositionX: 36.5
+PositionY: 16
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 2.282845
+SizeY: 2.282845
+SizeZ: 2.282845
+
+-
+ObjectNumber: 8
+ObjectName: Prop_Slide_Mid
+PositionX: 37.5
+PositionY: 15
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1.353554
+SizeY: 1.353554
+SizeZ: 1.353554
+
+-
+ObjectNumber: 9
+ObjectName: Prop_Slide_Mid
+PositionX: 38.5
+PositionY: 14
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1.353554
+SizeY: 1.353554
+SizeZ: 1.353554
+
+-
+ObjectNumber: 10
+ObjectName: Prop_Slide_Mid
+PositionX: 39.5
+PositionY: 13
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1.353554
+SizeY: 1.353554
+SizeZ: 1.353554
+
+-
+ObjectNumber: 11
+ObjectName: Prop_Slide_Mid
+PositionX: 40.5
+PositionY: 12
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1.353554
+SizeY: 1.353554
+SizeZ: 1.353554
+
+-
+ObjectNumber: 12
+ObjectName: Prop_Slide_Mid
+PositionX: 41.5
+PositionY: 11
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1.353554
+SizeY: 1.353554
+SizeZ: 1.353554
+
+-
+ObjectNumber: 13
+ObjectName: Prop_Slide_Mid
+PositionX: 42.5
+PositionY: 10
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1.353554
+SizeY: 1.353554
+SizeZ: 1.353554
+
+-
+ObjectNumber: 14
+ObjectName: Prop_Slide_Mid
+PositionX: 43.5
+PositionY: 9
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1.353554
+SizeY: 1.353554
+SizeZ: 1.353554
+
+-
+ObjectNumber: 15
+ObjectName: Prop_Slide_Mid
+PositionX: 44.5
+PositionY: 8
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1.353554
+SizeY: 1.353554
+SizeZ: 1.353554
+
+-
+ObjectNumber: 16
+ObjectName: Prop_Slide_Mid
+PositionX: 45.5
+PositionY: 7
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1.353554
+SizeY: 1.353554
+SizeZ: 1.353554
+
+-
+ObjectNumber: 17
+ObjectName: Prop_Slide_Mid
+PositionX: 46.5
+PositionY: 6
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1.353554
+SizeY: 1.353554
+SizeZ: 1.353554
+
+-
+ObjectNumber: 18
+ObjectName: Prop_Slide_Mid
+PositionX: 47.5
+PositionY: 5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1.353554
+SizeY: 1.353554
+SizeZ: 1.353554
+
+-
+ObjectNumber: 19
+ObjectName: Prop_Slide_Mid
+PositionX: 48.5
+PositionY: 4
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1.353554
+SizeY: 1.353554
+SizeZ: 1.353554
+
+-
+ObjectNumber: 20
+ObjectName: Prop_Slide_Mid
+PositionX: 49.5
+PositionY: 3
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1.353554
+SizeY: 1.353554
+SizeZ: 1.353554
+
+-
+ObjectNumber: 21
+ObjectName: Prop_Slide_Mid
+PositionX: 50.5
+PositionY: 2
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1.353554
+SizeY: 1.353554
+SizeZ: 1.353554
+
+-
+ObjectNumber: 22
+ObjectName: Prop_Slide_Mid
+PositionX: 51.5
+PositionY: 1
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1.353554
+SizeY: 1.353554
+SizeZ: 1.353554
+
+-
+ObjectNumber: 23
+ObjectName: Prop_Slide_Bot
+PositionX: 53.5
+PositionY: 0
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 2.070709
+SizeY: 2.070709
+SizeZ: 2.070709
+
+-
+ObjectNumber: 24
+ObjectName: Terrain_Path_Flat
+PositionX: 103.5
+PositionY: 0.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 99
+ScaleY: 1
+ScaleZ: 1
+SizeX: 99
+SizeY: 99
+SizeZ: 99
+
+-
+ObjectNumber: 25
+ObjectName: Terrain_Path_Flat
+PositionX: 65.5
+PositionY: 4
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 3
+ScaleY: 1
+ScaleZ: 1
+SizeX: 3
+SizeY: 3
+SizeZ: 3
+
+-
+ObjectNumber: 26
+ObjectName: Terrain_Path_Flat
+PositionX: 60.5
+PositionY: 9.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 7
+ScaleY: 1
+ScaleZ: 1
+SizeX: 7
+SizeY: 7
+SizeZ: 7
+
+-
+ObjectNumber: 27
+ObjectName: Terrain_Path_Flat
+PositionX: 63.5
+PositionY: 15.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 7
+ScaleY: 1
+ScaleZ: 1
+SizeX: 7
+SizeY: 7
+SizeZ: 7
+
+-
+ObjectNumber: 28
+ObjectName: Prop_Crate
+PositionX: 67.5
+PositionY: 15.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 29
+ObjectName: Prop_Crate
+PositionX: 67.5
+PositionY: 16.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 30
+ObjectName: Prop_Crate
+PositionX: 67.5
+PositionY: 17.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 31
+ObjectName: Prop_Crate
+PositionX: 67.5
+PositionY: 18.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 32
+ObjectName: Prop_Crate
+PositionX: 58.5
+PositionY: 0.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 33
+ObjectName: Prop_Crate
+PositionX: 59.5
+PositionY: 0.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 34
+ObjectName: Prop_Crate
+PositionX: 58.5
+PositionY: 1.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 35
+ObjectName: Prop_Crate
+PositionX: 59.5
+PositionY: 1.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 36
+ObjectName: Prop_Crate
+PositionX: 58.5
+PositionY: 2.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 37
+ObjectName: Prop_Crate
+PositionX: 59.5
+PositionY: 2.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 38
+ObjectName: Prop_Crate
+PositionX: 58.5
+PositionY: 3.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 39
+ObjectName: Prop_Crate
+PositionX: 59.5
+PositionY: 3.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 40
+ObjectName: Prop_Crate
+PositionX: 58.5
+PositionY: 4.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 41
+ObjectName: Prop_Crate
+PositionX: 59.5
+PositionY: 4.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 42
+ObjectName: Prop_Crate
+PositionX: 58.5
+PositionY: 5.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 43
+ObjectName: Prop_Crate
+PositionX: 59.5
+PositionY: 5.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 44
+ObjectName: Prop_Crate
+PositionX: 58.5
+PositionY: 6.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 45
+ObjectName: Prop_Crate
+PositionX: 59.5
+PositionY: 6.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 46
+ObjectName: Prop_Crate
+PositionX: 58.5
+PositionY: 7.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 47
+ObjectName: Prop_Crate
+PositionX: 59.5
+PositionY: 7.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 48
+ObjectName: Prop_Block_Brick
+PositionX: 72
+PositionY: 0.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 2
+ScaleY: 3
+ScaleZ: 1
+SizeX: 2
+SizeY: 2
+SizeZ: 2
+
+-
+ObjectNumber: 49
+ObjectName: Terrain_Path_Flat
+PositionX: 81
+PositionY: 6.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 16
+ScaleY: 1
+ScaleZ: 1
+SizeX: 16
+SizeY: 16
+SizeZ: 16
+
+-
+ObjectNumber: 50
+ObjectName: Terrain_Path_Flat
+PositionX: 83.5
+PositionY: 11.2
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 7
+ScaleY: 1
+ScaleZ: 1
+SizeX: 7
+SizeY: 7
+SizeZ: 7
+
+-
+ObjectNumber: 51
+ObjectName: Prop_Block_Brick
+PositionX: 88
+PositionY: 10.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 2
+ScaleY: 3
+ScaleZ: 1
+SizeX: 2
+SizeY: 2
+SizeZ: 2
+
+-
+ObjectNumber: 52
+ObjectName: Terrain_Path_Flat
+PositionX: 86
+PositionY: 22.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 2
+ScaleY: 1
+ScaleZ: 1
+SizeX: 2
+SizeY: 2
+SizeZ: 2
+
+-
+ObjectNumber: 53
+ObjectName: Prop_Block_2x3
+PositionX: 80
+PositionY: 17.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 2
+ScaleY: 1
+ScaleZ: 1
+SizeX: 3.800003
+SizeY: 3.800003
+SizeZ: 3.800003
+
+-
+ObjectNumber: 54
+ObjectName: Terrain_Path_Flat
+PositionX: 105
+PositionY: 22.75
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 10
+ScaleY: 1
+ScaleZ: 1
+SizeX: 10
+SizeY: 10
+SizeZ: 10
+
+-
+ObjectNumber: 55
+ObjectName: Terrain_Path_Flat
+PositionX: 91.5
+PositionY: 17.75
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 3
+ScaleY: 1
+ScaleZ: 1
+SizeX: 3
+SizeY: 3
+SizeZ: 3
+
+-
+ObjectNumber: 56
+ObjectName: Prop_Block_2x3
+PositionX: 98
+PositionY: 10.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 3
+ScaleY: 1
+ScaleZ: 1
+SizeX: 5.699997
+SizeY: 5.699997
+SizeZ: 5.699997
+
+-
+ObjectNumber: 57
+ObjectName: Prop_Block_2x3
+PositionX: 121.5
+PositionY: 13.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 3
+ScaleY: 1
+ScaleZ: 1
+SizeX: 5.699997
+SizeY: 5.699997
+SizeZ: 5.699997
+
+-
+ObjectNumber: 58
+ObjectName: Prop_Block_2x3
+PositionX: 137
+PositionY: 17.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 2
+ScaleY: 1
+ScaleZ: 1
+SizeX: 3.799988
+SizeY: 3.799988
+SizeZ: 3.799988
+
+-
+ObjectNumber: 59
+ObjectName: Terrain_Path_Flat
+PositionX: 150.5
+PositionY: 12.75
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 5
+ScaleY: 1
+ScaleZ: 1
+SizeX: 5
+SizeY: 5
+SizeZ: 5
+
+-
+ObjectNumber: 60
+ObjectName: Terrain_Grass_Flat
+PositionX: 0.5
+PositionY: 21
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 22
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 61
+ObjectName: Terrain_Path_Flat
+PositionX: 27.5
+PositionY: 0
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 53
+ScaleY: 1
+ScaleZ: 1
+SizeX: 53
+SizeY: 53
+SizeZ: 53
+
+-
+ObjectNumber: 62
+ObjectName: Terrain_Grass_Flat
+PositionX: 77
+PositionY: 26.25
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 152
+ScaleY: 1
+ScaleZ: 1
+SizeX: 152
+SizeY: 152
+SizeZ: 152
+
+-
+ObjectNumber: 63
+ObjectName: Terrain_Grass_Flat
+PositionX: 153.5
+PositionY: 21.1
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: -1
+ScaleY: 22
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 64
+ObjectName: Terrain_Grass_Flat
+PositionX: 24.5
+PositionY: 2
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 3
+ScaleY: 2
+ScaleZ: 1
+SizeX: 3
+SizeY: 3
+SizeZ: 3
+
+-
+ObjectNumber: 65
+ObjectName: Terrain_Grass_Flat
+PositionX: 30.5
+PositionY: 4
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 3
+ScaleY: 4
+ScaleZ: 1
+SizeX: 3
+SizeY: 3
+SizeZ: 3
+
+-
+ObjectNumber: 66
+ObjectName: Terrain_Grass_Flat
+PositionX: 38.5
+PositionY: 6
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 3
+ScaleY: 6
+ScaleZ: 1
+SizeX: 3
+SizeY: 3
+SizeZ: 3
+
+-
+ObjectNumber: 67
+ObjectName: Terrain_Grass_Flat
+PositionX: 65.5
+PositionY: 2.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 3
+ScaleY: 2
+ScaleZ: 1
+SizeX: 3
+SizeY: 3
+SizeZ: 3
+
+-
+ObjectNumber: 68
+ObjectName: Terrain_Grass_Flat
+PositionX: 56.5
+PositionY: 18.9
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 10
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 69
+ObjectName: Terrain_Grass_Flat
+PositionX: 62.5
+PositionY: 21.11
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 11
+ScaleY: 2
+ScaleZ: 1
+SizeX: 11
+SizeY: 11
+SizeZ: 11
+
+-
+ObjectNumber: 70
+ObjectName: Terrain_Grass_Flat
+PositionX: 73.5
+PositionY: 22.3
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 12
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 71
+ObjectName: Terrain_Grass_Flat
+PositionX: 73.5
+PositionY: 4.9
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 2
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 72
+ObjectName: Terrain_Grass_Flat
+PositionX: 67.5
+PositionY: 12.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 12
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 73
+ObjectName: Terrain_Grass_Flat
+PositionX: 89.5
+PositionY: 21.3
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 16
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 74
+ObjectName: Terrain_Grass_Flat
+PositionX: 83.5
+PositionY: 9.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 7
+ScaleY: 3
+ScaleZ: 1
+SizeX: 7
+SizeY: 7
+SizeZ: 7
+
+-
+ObjectNumber: 75
+ObjectName: Terrain_Grass_Flat
+PositionX: 86
+PositionY: 20
+PositionZ: 0
+RotationX: 0
+RotationY: 180
+RotationZ: 0
+ScaleX: 2
+ScaleY: 6
+ScaleZ: 1
+SizeX: 2
+SizeY: 2
+SizeZ: 2
+
+-
+ObjectNumber: 76
+ObjectName: Terrain_Grass_Flat
+PositionX: 91.5
+PositionY: 14.5
+PositionZ: 0
+RotationX: 0
+RotationY: 180
+RotationZ: 0
+ScaleX: 3
+ScaleY: 9
+ScaleZ: 1
+SizeX: 3
+SizeY: 3
+SizeZ: 3
+
+-
+ObjectNumber: 77
+ObjectName: Terrain_Grass_Flat
+PositionX: 79.5
+PositionY: 2.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 2
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 78
+ObjectName: Terrain_Grass_Flat
+PositionX: 85.5
+PositionY: 2.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 2
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 79
+ObjectName: Terrain_Grass_Flat
+PositionX: 82.5
+PositionY: 4.9
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 2
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 80
+ObjectName: Terrain_Path_Flat
+PositionX: 79.5
+PositionY: 4
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 81
+ObjectName: Terrain_Path_Flat
+PositionX: 85.5
+PositionY: 4
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 82
+ObjectName: Terrain_Grass_Flat
+PositionX: 105
+PositionY: 17.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 10
+ScaleY: 17
+ScaleZ: 1
+SizeX: 10
+SizeY: 10
+SizeZ: 10
+
+-
+ObjectNumber: 83
+ObjectName: Terrain_Grass_Flat
+PositionX: 150.5
+PositionY: 9.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 5
+ScaleY: 9
+ScaleZ: 1
+SizeX: 5
+SizeY: 5
+SizeZ: 5
+
+-
+ObjectNumber: 84
+ObjectName: Terrain_Grass_Flat (1)
+PositionX: 45.5
+PositionY: 3
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 3
+ScaleY: 3
+ScaleZ: 1
+
+-
+ObjectNumber: 85
+ObjectName: Terrain_Path_Flat (1)
+PositionX: 45.5
+PositionY: 4.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 3
+ScaleY: 1
+ScaleZ: 1
+

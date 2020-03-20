@@ -21,6 +21,7 @@
 //FD
 class MenuState;
 class GameState;
+class GameLoader;
 class State;
 
 class StateMachine
@@ -42,12 +43,14 @@ public:
 
 	State* getMenuState();
 	State* getGameState();
+	State* getGameLoader();
 
 
 private:
 
 	MenuState* menuState;
 	GameState* gameState;
+	GameLoader* gameLoader;
 
 	State* currentState;
 

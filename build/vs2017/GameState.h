@@ -11,6 +11,8 @@
 #include <box2d/Box2D.h>
 #include "game_object.h"
 #include <maths/math_utils.h>
+#include <vector>
+#include "Parser.h"
 
 
 
@@ -36,6 +38,9 @@ private:
 	void UpdateSimulation(float frame_time);
 	void handleInput(gef::InputManager* input_manager_);
 
+	gef::Scene* LoadSceneAssets(gef::Platform& platform, const char* filename);
+	gef::Mesh* GetMeshFromSceneAssets(gef::Scene* scene);
+
 
 	gef::Renderer3D* renderer_3d_;
 	PrimitiveBuilder* primitive_builder_;
@@ -52,6 +57,10 @@ private:
 	GameObject ground_;
 	b2Body* ground_body_;
 
+	gef::Scene* scene_assets_;
 
+	Parser parser;
+
+	std::vector<Model> models;
 };
 

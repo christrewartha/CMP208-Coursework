@@ -2,6 +2,7 @@
 
 #include "MenuState.h"
 #include "GameState.h"
+#include "GameLoader.h"
 
 
 StateMachine::StateMachine()
@@ -17,6 +18,7 @@ void StateMachine::init(gef::Platform& platform)
 {
 	menuState = new MenuState();
 	gameState = new GameState();
+	gameLoader = new GameLoader();
 
 
 	currentState = &*gameState;
@@ -26,6 +28,7 @@ void StateMachine::init(gef::Platform& platform)
 
 	menuState->init(platform);
 	gameState->init(platform);
+	gameLoader->init(platform);
 }
 
 void StateMachine::update(float frame_time, gef::InputManager* input_manager_)
@@ -56,6 +59,11 @@ State* StateMachine::getMenuState()
 State* StateMachine::getGameState()
 {
 	return gameState;
+}
+
+State* StateMachine::getGameLoader()
+{
+	return gameLoader;
 }
 
 void StateMachine::changeState(State &state)

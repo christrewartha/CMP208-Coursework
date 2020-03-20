@@ -19,6 +19,24 @@ void GameState::init(gef::Platform& platform_)
 	// initialise primitive builder to make create some 3D geometry easier
 	primitive_builder_ = new PrimitiveBuilder(platform_);
 
+	// load the assets in from the .scn
+	const char* scene_asset_filename = "PlayerFemale.scn";
+	scene_assets_ = LoadSceneAssets(platform_, scene_asset_filename);
+
+	if (scene_assets_)
+	{
+		//playerMeshInstance.set_mesh(GetMeshFromSceneAssets(scene_assets_));
+		//playerMeshInstance.set_mesh(primitive_builder_->GetDefaultCubeMesh());
+	}
+
+	else
+	{
+		gef::DebugOut("Scene file %s failed to load\n", scene_asset_filename);
+	}
+
+	parser.init(primitive_builder_, scene_assets_, platform_);
+
+	models = parser.getModelVector();
 
 	SetupLights();
 
@@ -26,17 +44,28 @@ void GameState::init(gef::Platform& platform_)
 	b2Vec2 gravity(0.0f, -9.81f);
 	world_ = new b2World(gravity);
 
+	for (int i = 0; i < models.size(); i++)
+	{
+		models[i].setCollider(world_);
+	}
+
 	InitPlayer();
 	InitGround();
 }
 
-void GameState::update(float frame_time, gef::InputManager* input_manager_, StateMachine* stateMachinePtr)
+void GameState::update(float frame_time, gef::InputManager* input_manager_, StateMachine* stateMachine)
 {
 	//const gef::SonyController* controller = input_manager_->controller_input()->GetController(0);
 
 	handleInput(input_manager_);
 
 	UpdateSimulation(frame_time);
+
+
+	/*for (int i = 0; i < models.size(); i++)
+	{
+		models[i].update();
+	}*/
 }
 
 void GameState::render(gef::SpriteRenderer* sprite_renderer_, gef::Font* font_, float fps_, gef::Platform& platform_)
@@ -51,8 +80,8 @@ void GameState::render(gef::SpriteRenderer* sprite_renderer_, gef::Font* font_, 
 	renderer_3d_->set_projection_matrix(projection_matrix);
 
 	// view
-	gef::Vector4 camera_eye(0.0f, 10.0f, 10.0f);
-	gef::Vector4 camera_lookat(0.0f, 0.0f, 0.0f);
+	gef::Vector4 camera_eye(24.5f, 7.0f, 20.0f);
+	gef::Vector4 camera_lookat(24.5f, 3.5f, 0.5f);
 	gef::Vector4 camera_up(0.0f, 1.0f, 0.0f);
 	gef::Matrix44 view_matrix;
 	view_matrix.LookAt(camera_eye, camera_lookat, camera_up);
@@ -62,8 +91,18 @@ void GameState::render(gef::SpriteRenderer* sprite_renderer_, gef::Font* font_, 
 	// draw 3d geometry
 	renderer_3d_->Begin();
 
+	for (int i = 0; i < models.size(); i++)
+	{
+		models[i].render(*renderer_3d_);
+	}
+
+	/*for (int i = 0; i < 25; i++)
+	{
+		models[i].render(*renderer_3d_);
+	}*/
+
 	// draw ground
-	renderer_3d_->DrawMesh(ground_);
+	//renderer_3d_->DrawMesh(ground_);
 
 	// draw player
 	renderer_3d_->set_override_material(&primitive_builder_->red_material());
@@ -105,7 +144,7 @@ void GameState::InitPlayer()
 	// create a physics body for the player
 	b2BodyDef player_body_def;
 	player_body_def.type = b2_dynamicBody;
-	player_body_def.position = b2Vec2(0.0f, 4.0f);
+	player_body_def.position = b2Vec2(24.5f, 5.5f);
 
 	player_body_ = world_->CreateBody(&player_body_def);
 
@@ -266,4 +305,14 @@ void GameState::handleInput(gef::InputManager* input_manager_)
 	{
 		player_body_->ApplyForceToCenter(b2Vec2(100.0f, 0.0f), true);
 	}
+}
+
+gef::Scene* GameState::LoadSceneAssets(gef::Platform& platform, const char* filename)
+{
+	return nullptr;
+}
+
+gef::Mesh* GameState::GetMeshFromSceneAssets(gef::Scene* scene)
+{
+	return nullptr;
 }
