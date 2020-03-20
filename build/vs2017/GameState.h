@@ -36,7 +36,7 @@ private:
 	void InitGround();
 	void SetupLights();
 	void UpdateSimulation(float frame_time);
-	void handleInput(gef::InputManager* input_manager_);
+	void handleInput(gef::InputManager* input_manager_, float frame_time);
 
 	gef::Scene* LoadSceneAssets(gef::Platform& platform, const char* filename);
 	gef::Mesh* GetMeshFromSceneAssets(gef::Scene* scene);

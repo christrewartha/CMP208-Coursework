@@ -165,7 +165,7 @@ void Model::setCollider(b2World* world)
 
 		fixtureDef.density = 1.0f;
 		fixtureDef.shape = &shape;
-		fixtureDef.friction = 0.5f; // between 0 and 1
+		fixtureDef.friction = 0.f; // between 0 and 1
 		body->CreateFixture(&fixtureDef);
 	}
 
