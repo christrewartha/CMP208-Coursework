@@ -228,6 +228,51 @@ void Model::setCollider(b2World* world)
 		fixtureDef.friction = 0.5f; // between 0 and 1
 		body->CreateFixture(&fixtureDef);
 	}
+
+
+	// Platforms that move by player collision
+	else if (name == "Prop_Crate")
+	{
+		bodyDef.type = b2_staticBody;
+		bodyDef.position = b2Vec2(position.x(), position.y());
+		body = world->CreateBody(&bodyDef);
+
+		shape.SetAsBox(size.x() / 2, size.y() / 2);
+
+		fixtureDef.density = 1.0f;
+		fixtureDef.shape = &shape;
+		fixtureDef.friction = 0.5f; // between 0 and 1
+		body->CreateFixture(&fixtureDef);
+	}
+
+	else if (name == "Prop_Slide_Top")
+	{
+		/*b2Vec2 v1(1.0f, 0.0f);
+		b2Vec2 v2(21.0f, -20.0f);
+
+		b2EdgeShape edge;
+		edge.Set(v1, v2);*/
+
+		b2Vec2 vs[4];
+		vs[0].Set(0.0f, 0.0f);
+		vs[1].Set(1.0f, -0.5f);
+		vs[2].Set(17.0f, -16.0f);
+		vs[3].Set(25.0f, -21.0f);
+
+		b2ChainShape chain;
+		chain.CreateChain(vs, 4);
+
+		bodyDef.type = b2_staticBody;
+		bodyDef.position = b2Vec2(position.x() - (size.x() / 2), position.y() + size.y());
+		body = world->CreateBody(&bodyDef);
+
+		//shape.SetAsBox(size.x() / 2, size.y() / 2);
+
+		fixtureDef.density = 1.0f;
+		fixtureDef.shape = &chain;
+		fixtureDef.friction = 0.5f; // between 0 and 1
+		body->CreateFixture(&fixtureDef);
+	}
 }
 
 void Model::offsetBodyPositions()

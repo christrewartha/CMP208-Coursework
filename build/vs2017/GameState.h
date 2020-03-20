@@ -65,5 +65,11 @@ private:
 
 	const float CAMERA_OFFSET_Y = 10.0f;
 	const float CAMERA_OFFSET_Z = 20.0f;
+
+	b2Body* body;
+	b2BodyDef bodyDef;
+	b2PolygonShape shape;
+	b2FixtureDef fixtureDef;
+	b2MassData massData;
 };
 
