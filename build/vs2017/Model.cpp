@@ -170,6 +170,11 @@ void Model::setCollider(b2World* world)
 		fixtureDef.friction = 0.5f; // between 0 and 1
 		body->CreateFixture(&fixtureDef);
 
+		// Create sensor
+		shape.SetAsBox(size.x() / 2.5f, size.y() / 4, b2Vec2(0.0f, size.y() / 4), 0); // size.y / 2 maybe for centre
+		fixtureDef.isSensor = true;
+		body->CreateFixture(&fixtureDef);
+
 		body->SetUserData(this);
 	}
 
@@ -208,6 +213,11 @@ void Model::setCollider(b2World* world)
 		fixtureDef.friction = 0.5f; // between 0 and 1
 		body->CreateFixture(&fixtureDef);
 
+		// Create sensor
+		shape.SetAsBox(size.x() / 2.5f, size.y() / 4, b2Vec2(0.0f, size.y() / 4), 0);
+		fixtureDef.isSensor = true;
+		body->CreateFixture(&fixtureDef);
+
 		body->SetUserData(this);
 	}
 
@@ -235,7 +245,7 @@ void Model::setCollider(b2World* world)
 	{
 		set_type(PATH);
 
-		bodyDef.type = b2_staticBody;
+		bodyDef.type = b2_dynamicBody;
 		bodyDef.position = b2Vec2(position.x(), position.y());
 		body = world->CreateBody(&bodyDef);
 

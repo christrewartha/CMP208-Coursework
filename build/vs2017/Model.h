@@ -78,7 +78,9 @@ private:
 	b2BodyDef bodyDef;
 	b2PolygonShape shape;
 	b2FixtureDef fixtureDef;
+	b2FixtureDef sensorFixtureDef;
 	b2MassData massData;
+	// do the above like player pls
 
 	float positionOffset;
 };

@@ -38,9 +38,12 @@ void ContactManager::BeginContact(b2Contact* contact)
 	{
 		if (fixtureA->IsSensor())
 		{
-			if (objectB->type() != WALL)
+			if (fixtureB->IsSensor())
 			{
-				objectA->setFootContacts(objectA->getFootContacts() + 1);
+				if (objectB->type() != WALL)
+				{
+					objectA->setFootContacts(objectA->getFootContacts() + 1);
+				}
 			}
 		}
 
@@ -52,9 +55,12 @@ void ContactManager::BeginContact(b2Contact* contact)
 	{
 		if (fixtureB->IsSensor())
 		{
-			if (objectA->type() != WALL)
+			if (fixtureA->IsSensor())
 			{
-				objectB->setFootContacts(objectB->getFootContacts() + 1);
+				if (objectA->type() != WALL)
+				{
+					objectB->setFootContacts(objectB->getFootContacts() + 1);
+				}
 			}
 		}
 
@@ -85,9 +91,12 @@ void ContactManager::EndContact(b2Contact* contact)
 	{
 		if (fixtureA->IsSensor())
 		{
-			if (objectB->type() != WALL)
+			if (fixtureB->IsSensor())
 			{
-				objectA->setFootContacts(objectA->getFootContacts() - 1);
+				if (objectB->type() != WALL)
+				{
+					objectA->setFootContacts(objectA->getFootContacts() - 1);
+				}
 			}
 		}
 
@@ -99,9 +108,12 @@ void ContactManager::EndContact(b2Contact* contact)
 	{
 		if (fixtureB->IsSensor())
 		{
-			if (objectA->type() != WALL)
+			if (fixtureA->IsSensor())
 			{
-				objectB->setFootContacts(objectB->getFootContacts() - 1);
+				if (objectA->type() != WALL)
+				{
+					objectB->setFootContacts(objectB->getFootContacts() - 1);
+				}
 			}
 		}
 
