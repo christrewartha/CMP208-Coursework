@@ -22,7 +22,7 @@ void Player::init(gef::Platform& platform_, b2World* world_)
 	// create a physics body for the player
 	b2BodyDef player_body_def;
 	player_body_def.type = b2_dynamicBody;
-	player_body_def.position = b2Vec2(36.0f, 18.0f);
+	player_body_def.position = b2Vec2(5.0f, 5.0f);
 
 	player_body_ = world_->CreateBody(&player_body_def);
 
@@ -60,8 +60,8 @@ void Player::init(gef::Platform& platform_, b2World* world_)
 
 	b2MassData playerMassData;
 	playerMassData.center = b2Vec2(0.0f, 0.0f);
-	//playerMassData.mass = 60.f;
-	playerMassData.mass = 40.f;
+	playerMassData.mass = 20.f;
+	//playerMassData.mass = 40.f;
 	playerMassData.I = 1.0f;
 	player_body_->SetMassData(&playerMassData);
 
@@ -74,6 +74,9 @@ void Player::init(gef::Platform& platform_, b2World* world_)
 	colliding = false;
 	numberOfContacts = 0;
 	//footContacts = 0;
+
+	currentImpulse = player_body_->GetMass() / 10.0f;
+	maxImpulse = player_body_->GetMass() * 2.0f;
 }
 
 void Player::update()
@@ -85,17 +88,29 @@ void Player::handleInput(float frame_time, gef::InputManager* input_manager_)
 {
 	if (input_manager_->keyboard()->IsKeyDown(gef::Keyboard::KC_W) && footContacts > 0)
 	{
-		player_body_->ApplyLinearImpulseToCenter(b2Vec2(0.0f, 20.0f), true);
+		player_body_->ApplyLinearImpulseToCenter(b2Vec2(0.0f, currentImpulse), true);
+
+		currentImpulse += 1.0f;
+
+		if (currentImpulse >= maxImpulse)
+		{
+			currentImpulse = maxImpulse;
+		}
+	}
+
+	if (input_manager_->keyboard()->IsKeyReleased(gef::Keyboard::KC_W))
+	{
+		currentImpulse = player_body_->GetMass() / 10.0f;
 	}
 
 	if (input_manager_->keyboard()->IsKeyDown(gef::Keyboard::KC_A))
 	{
-		player_body_->ApplyForceToCenter(b2Vec2(-100.0f, 0.0f), true);
+		player_body_->ApplyForceToCenter(b2Vec2(-150.0f, 0.0f), true);
 	}
 
 	if (input_manager_->keyboard()->IsKeyDown(gef::Keyboard::KC_D))
 	{
-		player_body_->ApplyForceToCenter(b2Vec2(100.0f, 0.0f), true);
+		player_body_->ApplyForceToCenter(b2Vec2(150.0f, 0.0f), true);
 	}
 }
 
@@ -146,4 +161,9 @@ int Player::getFootContacts()
 void Player::setFootContacts(int fc)
 {
 	footContacts = fc;
+}
+
+float Player::getImpulse()
+{
+	return currentImpulse;
 }

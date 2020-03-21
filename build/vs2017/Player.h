@@ -26,6 +26,7 @@ public:
 	void endContact();
 	int getFootContacts();
 	void setFootContacts(int fc);
+	float getImpulse();
 
 
 private:
@@ -38,5 +39,8 @@ private:
 
 	int numberOfContacts;
 	int footContacts;
+
+	float currentImpulse;
+	float maxImpulse;
 };
 

@@ -115,6 +115,8 @@ void GameState::render(gef::SpriteRenderer* sprite_renderer_, gef::Font* font_, 
 
 	font_->RenderText(sprite_renderer_, gef::Vector4(0, 0, -0.9f), 1.0f, 0xffffffff, gef::TJ_LEFT, "Foot Contacts: %i", player_.getFootContacts());
 
+	font_->RenderText(sprite_renderer_, gef::Vector4(0, 15, -0.9f), 1.0f, 0xffffffff, gef::TJ_LEFT, "Impulse: %f", player_.getImpulse());
+
 
 	sprite_renderer_->End();
 }
