@@ -21,30 +21,41 @@ void ContactManager::BeginContact(b2Contact* contact)
 	b2Body* bodyB = fixtureB->GetBody();
 
 	// Set player pointers to null
+	Player* playerA = NULL;
+	Player* playerB = NULL;
+
+	// Set game object pointers to null
 	Player* objectA = NULL;
 	Player* objectB = NULL;
 
-	// Check if either object has user data - this will be the player
+	// Store user data
 	objectA = (Player*)bodyA->GetUserData();
 	objectB = (Player*)bodyB->GetUserData();
 
+
 	// If object A is the player
-	if (objectA)
+	if (objectA->type() == PLAYER)
 	{
 		if (fixtureA->IsSensor())
 		{
-			objectA->setFootContacts(objectA->getFootContacts() + 1);
+			if (objectB->type() != WALL)
+			{
+				objectA->setFootContacts(objectA->getFootContacts() + 1);
+			}
 		}
 
 		objectA->startContact();
 	}
 
 	// If object B is the player
-	if (objectB)
+	else if (objectB->type() == PLAYER)
 	{
 		if (fixtureB->IsSensor())
 		{
-			objectB->setFootContacts(objectB->getFootContacts() + 1);
+			if (objectA->type() != WALL)
+			{
+				objectB->setFootContacts(objectB->getFootContacts() + 1);
+			}
 		}
 
 		objectB->startContact();
@@ -70,22 +81,28 @@ void ContactManager::EndContact(b2Contact* contact)
 	objectB = (Player*)bodyB->GetUserData();
 
 	// If object A is the player
-	if (objectA)
+	if (objectA->type() == PLAYER)
 	{
 		if (fixtureA->IsSensor())
 		{
-			objectA->setFootContacts(objectA->getFootContacts() - 1);
+			if (objectB->type() != WALL)
+			{
+				objectA->setFootContacts(objectA->getFootContacts() - 1);
+			}
 		}
 
 		objectA->endContact();
 	}
 
 	// If object B is the player
-	if (objectB)
+	else if (objectB->type() == PLAYER)
 	{
 		if (fixtureB->IsSensor())
 		{
-			objectB->setFootContacts(objectB->getFootContacts() - 1);
+			if (objectA->type() != WALL)
+			{
+				objectB->setFootContacts(objectB->getFootContacts() - 1);
+			}
 		}
 
 		objectB->endContact();

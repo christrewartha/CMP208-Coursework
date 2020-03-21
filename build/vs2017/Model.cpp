@@ -157,6 +157,8 @@ void Model::setCollider(b2World* world)
 	// What the player walks on
 	if (name == "Terrain_Path_Flat")
 	{
+		set_type(PATH);
+
 		bodyDef.type = b2_staticBody;
 		bodyDef.position = b2Vec2(position.x(), position.y() - 0.5f);
 		body = world->CreateBody(&bodyDef);
@@ -167,11 +169,15 @@ void Model::setCollider(b2World* world)
 		fixtureDef.shape = &shape;
 		fixtureDef.friction = 0.5f; // between 0 and 1
 		body->CreateFixture(&fixtureDef);
+
+		body->SetUserData(this);
 	}
 
 	// Edges of platforms
 	else if (name == "Terrain_Grass_Flat")
 	{
+		set_type(WALL);
+
 		bodyDef.type = b2_staticBody;
 		bodyDef.position = b2Vec2(position.x(), position.y() - positionOffset);
 		body = world->CreateBody(&bodyDef);
@@ -182,11 +188,15 @@ void Model::setCollider(b2World* world)
 		fixtureDef.shape = &shape;
 		fixtureDef.friction = 0.5f; // between 0 and 1
 		body->CreateFixture(&fixtureDef);
+
+		body->SetUserData(this);
 	}
 
 	// Platforms that move
 	else if (name == "Prop_Block_2x3")
 	{
+		set_type(PATH);
+
 		bodyDef.type = b2_staticBody;
 		bodyDef.position = b2Vec2(position.x() - positionOffset, position.y() + 0.5f);
 		body = world->CreateBody(&bodyDef);
@@ -197,11 +207,15 @@ void Model::setCollider(b2World* world)
 		fixtureDef.shape = &shape;
 		fixtureDef.friction = 0.5f; // between 0 and 1
 		body->CreateFixture(&fixtureDef);
+
+		body->SetUserData(this);
 	}
 
 	// Platforms that move by rope
 	else if (name == "Prop_Block_Brick")
 	{
+		set_type(PATH);
+
 		bodyDef.type = b2_staticBody;
 		bodyDef.position = b2Vec2(position.x(), position.y() + positionOffset);
 		body = world->CreateBody(&bodyDef);
@@ -212,11 +226,15 @@ void Model::setCollider(b2World* world)
 		fixtureDef.shape = &shape;
 		fixtureDef.friction = 0.5f; // between 0 and 1
 		body->CreateFixture(&fixtureDef);
+
+		body->SetUserData(this);
 	}
 
 	// Platforms that move by player collision
 	else if (name == "Prop_Crate")
 	{
+		set_type(PATH);
+
 		bodyDef.type = b2_staticBody;
 		bodyDef.position = b2Vec2(position.x(), position.y());
 		body = world->CreateBody(&bodyDef);
@@ -227,12 +245,16 @@ void Model::setCollider(b2World* world)
 		fixtureDef.shape = &shape;
 		fixtureDef.friction = 0.5f; // between 0 and 1
 		body->CreateFixture(&fixtureDef);
+
+		body->SetUserData(this);
 	}
 
 
 	// Platforms that move by player collision
 	else if (name == "Prop_Crate")
 	{
+		set_type(PATH);
+
 		bodyDef.type = b2_staticBody;
 		bodyDef.position = b2Vec2(position.x(), position.y());
 		body = world->CreateBody(&bodyDef);
@@ -243,6 +265,8 @@ void Model::setCollider(b2World* world)
 		fixtureDef.shape = &shape;
 		fixtureDef.friction = 0.5f; // between 0 and 1
 		body->CreateFixture(&fixtureDef);
+
+		body->SetUserData(this);
 	}
 
 	else if (name == "Prop_Slide_Top")
@@ -252,6 +276,8 @@ void Model::setCollider(b2World* world)
 
 		b2EdgeShape edge;
 		edge.Set(v1, v2);*/
+
+		set_type(PATH);
 
 		b2Vec2 vs[4];
 		vs[0].Set(0.0f, 0.0f);
@@ -272,6 +298,8 @@ void Model::setCollider(b2World* world)
 		fixtureDef.shape = &chain;
 		fixtureDef.friction = 0.5f; // between 0 and 1
 		body->CreateFixture(&fixtureDef);
+
+		body->SetUserData(this);
 	}
 }
 

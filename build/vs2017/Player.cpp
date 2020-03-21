@@ -5,6 +5,7 @@ Player::Player()  :
 	player_body_(NULL)
 {
 	set_type(PLAYER);
+	footContacts = 0;
 }
 
 
@@ -21,7 +22,7 @@ void Player::init(gef::Platform& platform_, b2World* world_)
 	// create a physics body for the player
 	b2BodyDef player_body_def;
 	player_body_def.type = b2_dynamicBody;
-	player_body_def.position = b2Vec2(32.0f, 18.0f);
+	player_body_def.position = b2Vec2(36.0f, 18.0f);
 
 	player_body_ = world_->CreateBody(&player_body_def);
 
@@ -40,12 +41,21 @@ void Player::init(gef::Platform& platform_, b2World* world_)
 	player_body_->CreateFixture(&player_fixture_def);
 
 	b2PolygonShape sensorShape;
-	sensorShape.SetAsBox(0.5f, 0.5f, b2Vec2(0.0f, -0.5f), 0.0f);
+	sensorShape.SetAsBox(0.25f, 0.25f, b2Vec2(0.0f, -0.5f), 0.0f); // Bottom
 
 	// Create the sensor fixture
 	b2FixtureDef playerSensorFixtureDef;
 	playerSensorFixtureDef.shape = &sensorShape;
 	playerSensorFixtureDef.isSensor = true;
+	player_body_->CreateFixture(&playerSensorFixtureDef);
+
+	sensorShape.SetAsBox(0.25f, 0.25f, b2Vec2(-0.5f, -0.0f), 0.0f); // Left
+	player_body_->CreateFixture(&playerSensorFixtureDef);
+
+	sensorShape.SetAsBox(0.25f, 0.25f, b2Vec2(0.5f, -0.0f), 0.0f); // Right
+	player_body_->CreateFixture(&playerSensorFixtureDef);
+
+	sensorShape.SetAsBox(0.25f, 0.25f, b2Vec2(0.0f, 0.5f), 0.0f); // Top
 	player_body_->CreateFixture(&playerSensorFixtureDef);
 
 	b2MassData playerMassData;
@@ -63,7 +73,7 @@ void Player::init(gef::Platform& platform_, b2World* world_)
 
 	colliding = false;
 	numberOfContacts = 0;
-	footContacts = 0;
+	//footContacts = 0;
 }
 
 void Player::update()
