@@ -6,21 +6,21 @@ gef::Vector4 vect;
 char text[256];
 
 
-void Parser::init(PrimitiveBuilder* primitiveBuilder, gef::Scene* sceneAssets, gef::Platform& platform)
+void Parser::init(gef::Scene* sceneAssets, gef::Platform& platform)
 {
-	readFile(primitiveBuilder, sceneAssets, platform);
+	readFile(sceneAssets, platform);
 }
 
-void Parser::initModels(PrimitiveBuilder* primitiveBuilder, gef::Scene* sceneAssets, gef::Platform& platform)
+void Parser::initModels(gef::Scene* sceneAssets, gef::Platform& platform)
 {
 	for (int i = 0; i < models.size(); i++)
 	{
-		models[i].init(primitiveBuilder, sceneAssets, platform);
+		models[i].init(sceneAssets, platform);
 	}
 }
 
 
-void Parser::readFile(PrimitiveBuilder* primitiveBuilder, gef::Scene* sceneAssets, gef::Platform& platform)
+void Parser::readFile(gef::Scene* sceneAssets, gef::Platform& platform)
 {
 	if (file == NULL)
 	{
@@ -30,7 +30,7 @@ void Parser::readFile(PrimitiveBuilder* primitiveBuilder, gef::Scene* sceneAsset
 	else
 	{
 		fillVector();
-		initModels(primitiveBuilder, sceneAssets, platform);
+		initModels(sceneAssets, platform);
 		std::cout << "Test"; //TODO: delete
 	}
 }

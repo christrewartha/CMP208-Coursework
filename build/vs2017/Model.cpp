@@ -1,6 +1,6 @@
 #include "Model.h"
 #include "maths/quaternion.h"
-void Model::init(PrimitiveBuilder* primitiveBuilder, gef::Scene* sceneAssets, gef::Platform& platform)
+void Model::init(gef::Scene* sceneAssets, gef::Platform& platform)
 {
 	translateVect = gef::Vector4(position);
 	rotateVect = gef::Vector4(rotation);

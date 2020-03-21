@@ -9,10 +9,10 @@
 #include <graphics/sprite.h>
 #include <graphics/renderer_3d.h>
 #include <box2d/Box2D.h>
-#include "game_object.h"
 #include <maths/math_utils.h>
 #include <vector>
 #include "Parser.h"
+#include "Player.h"
 
 
 
@@ -32,25 +32,23 @@ public:
 
 private:
 
-	void InitPlayer();
-	void InitGround();
 	void SetupLights();
 	void UpdateSimulation(float frame_time);
-	void handleInput(gef::InputManager* input_manager_);
+	void handleInput(float frame_time, gef::InputManager* input_manager_);
 
 	gef::Scene* LoadSceneAssets(gef::Platform& platform, const char* filename);
 	gef::Mesh* GetMeshFromSceneAssets(gef::Scene* scene);
 
 
 	gef::Renderer3D* renderer_3d_;
-	PrimitiveBuilder* primitive_builder_;
+	
 
 	// create the physics world
 	b2World* world_;
 
 	// player variables
 	Player player_;
-	b2Body* player_body_;
+	
 
 	// ground variables
 	const gef::Mesh* ground_mesh_;
@@ -65,11 +63,5 @@ private:
 
 	const float CAMERA_OFFSET_Y = 10.0f;
 	const float CAMERA_OFFSET_Z = 20.0f;
-
-	b2Body* body;
-	b2BodyDef bodyDef;
-	b2PolygonShape shape;
-	b2FixtureDef fixtureDef;
-	b2MassData massData;
 };
 

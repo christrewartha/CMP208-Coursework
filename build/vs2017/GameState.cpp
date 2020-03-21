@@ -2,8 +2,7 @@
 
 
 GameState::GameState() :
-	world_(NULL),
-	player_body_(NULL)
+	world_(NULL)	
 {
 	
 }
@@ -17,8 +16,7 @@ void GameState::init(gef::Platform& platform_)
 	// create the renderer for draw 3D geometry
 	renderer_3d_ = gef::Renderer3D::Create(platform_);
 
-	// initialise primitive builder to make create some 3D geometry easier
-	primitive_builder_ = new PrimitiveBuilder(platform_);
+	
 
 	// load the assets in from the .scn
 	const char* scene_asset_filename = "PlayerFemale.scn";
@@ -35,7 +33,7 @@ void GameState::init(gef::Platform& platform_)
 		gef::DebugOut("Scene file %s failed to load\n", scene_asset_filename);
 	}
 
-	parser.init(primitive_builder_, scene_assets_, platform_);
+	parser.init(scene_assets_, platform_);
 
 	models = parser.getModelVector();
 
@@ -50,15 +48,14 @@ void GameState::init(gef::Platform& platform_)
 		models[i].setCollider(world_);
 	}
 
-	InitPlayer();
-	InitGround();
+	player_.init(platform_, world_);
 }
 
 void GameState::update(float frame_time, gef::InputManager* input_manager_, StateMachine* stateMachine)
 {
 	//const gef::SonyController* controller = input_manager_->controller_input()->GetController(0);
 
-	handleInput(input_manager_);
+	handleInput(frame_time, input_manager_);
 
 	UpdateSimulation(frame_time);
 
@@ -81,8 +78,8 @@ void GameState::render(gef::SpriteRenderer* sprite_renderer_, gef::Font* font_, 
 	renderer_3d_->set_projection_matrix(projection_matrix);
 
 	// view
-	gef::Vector4 camera_eye(player_body_->GetPosition().x, player_body_->GetPosition().y, CAMERA_OFFSET_Z);
-	gef::Vector4 camera_lookat(player_body_->GetPosition().x, player_body_->GetPosition().y, 0.0f);
+	gef::Vector4 camera_eye(player_.getBody()->GetPosition().x, player_.getBody()->GetPosition().y, CAMERA_OFFSET_Z);
+	gef::Vector4 camera_lookat(player_.getBody()->GetPosition().x, player_.getBody()->GetPosition().y, 0.0f);
 	gef::Vector4 camera_up(0.0f, 1.0f, 0.0f);
 	gef::Matrix44 view_matrix;
 	view_matrix.LookAt(camera_eye, camera_lookat, camera_up);
@@ -105,10 +102,7 @@ void GameState::render(gef::SpriteRenderer* sprite_renderer_, gef::Font* font_, 
 	// draw ground
 	//renderer_3d_->DrawMesh(ground_);
 
-	// draw player
-	renderer_3d_->set_override_material(&primitive_builder_->red_material());
-	renderer_3d_->DrawMesh(player_);
-	renderer_3d_->set_override_material(NULL);
+	player_.render(renderer_3d_);
 
 	renderer_3d_->End();
 
@@ -129,85 +123,8 @@ void GameState::release()
 	delete ground_mesh_;
 	ground_mesh_ = NULL;
 
-	delete primitive_builder_;
-	primitive_builder_ = NULL;
-
 	delete renderer_3d_;
 	renderer_3d_ = NULL;
-}
-
-void GameState::InitPlayer()
-{
-	// setup the mesh for the player
-	//player_.set_mesh(primitive_builder_->GetDefaultCubeMesh());
-	player_.set_mesh(primitive_builder_->GetDefaultSphereMesh());
-
-	// create a physics body for the player
-	b2BodyDef player_body_def;
-	player_body_def.type = b2_dynamicBody;
-	player_body_def.position = b2Vec2(35.0f, 18.0f);
-
-	player_body_ = world_->CreateBody(&player_body_def);
-
-	// create the shape for the player
-	//b2PolygonShape player_shape;
-	//player_shape.SetAsBox(0.5f, 0.5f);
-
-	b2CircleShape player_shape;
-	player_shape.m_radius = 0.5f;
-
-	// create the fixture
-	b2FixtureDef player_fixture_def;
-	player_fixture_def.shape = &player_shape;
-	player_fixture_def.density = 1.0f;
-
-	// create the fixture on the rigid body
-	player_body_->CreateFixture(&player_fixture_def);
-
-	b2MassData playerMassData;
-	playerMassData.center = b2Vec2(0.0f, 0.0f);
-	//playerMassData.mass = 60.f;
-	playerMassData.mass = 40.f;
-	playerMassData.I = 1.0f;
-	player_body_->SetMassData(&playerMassData);
-
-	// update visuals from simulation data
-	player_.UpdateFromSimulation(player_body_);
-
-	// create a connection between the rigid body and GameObject
-	player_body_->SetUserData(&player_);
-}
-
-void GameState::InitGround()
-{
-	// ground dimensions
-	gef::Vector4 ground_half_dimensions(5.0f, 0.1f, 0.1f);
-
-	// setup the mesh for the ground
-	ground_mesh_ = primitive_builder_->CreateBoxMesh(ground_half_dimensions);
-	ground_.set_mesh(ground_mesh_);
-
-	// create a physics body
-	b2BodyDef body_def;
-	body_def.type = b2_staticBody;
-	body_def.position = b2Vec2(0.0f, 0.0f);
-
-	ground_body_ = world_->CreateBody(&body_def);
-
-	// create the shape
-	b2PolygonShape shape;
-	shape.SetAsBox(ground_half_dimensions.x(), ground_half_dimensions.y());
-
-	// create the fixture
-	b2FixtureDef fixture_def;
-	fixture_def.shape = &shape;
-	fixture_def.friction = 0.0f; // between 0 and 1
-
-	// create the fixture on the rigid body
-	ground_body_->CreateFixture(&fixture_def);
-
-	// update visuals from simulation data
-	ground_.UpdateFromSimulation(ground_body_);
 }
 
 void GameState::SetupLights()
@@ -237,7 +154,7 @@ void GameState::UpdateSimulation(float frame_time)
 	world_->Step(timeStep, velocityIterations, positionIterations);
 
 	// update object visuals from simulation data
-	player_.UpdateFromSimulation(player_body_);
+	player_.update();
 
 	// don't have to update the ground visuals as it is static
 
@@ -263,6 +180,7 @@ void GameState::UpdateSimulation(float frame_time)
 
 			gameObjectA = (GameObject*)bodyA->GetUserData();
 			gameObjectB = (GameObject*)bodyB->GetUserData();
+			
 
 			if (gameObjectA)
 			{
@@ -280,10 +198,10 @@ void GameState::UpdateSimulation(float frame_time)
 				}
 			}
 
-			if (player)
+			/*if (player)
 			{
 				player->DecrementHealth();
-			}
+			}*/
 		}
 
 		// Get next contact point
@@ -291,22 +209,10 @@ void GameState::UpdateSimulation(float frame_time)
 	}
 }
 
-void GameState::handleInput(gef::InputManager* input_manager_)
+void GameState::handleInput(float frame_time, gef::InputManager* input_manager_)
 {
-	if (input_manager_->keyboard()->IsKeyDown(gef::Keyboard::KC_W))
-	{
-		player_body_->ApplyLinearImpulseToCenter(b2Vec2(0.0f, 20.0f), true);
-	}
-
-	if (input_manager_->keyboard()->IsKeyDown(gef::Keyboard::KC_A))
-	{
-		player_body_->ApplyForceToCenter(b2Vec2(-100.0f, 0.0f), true);
-	}
-
-	if (input_manager_->keyboard()->IsKeyDown(gef::Keyboard::KC_D))
-	{
-		player_body_->ApplyForceToCenter(b2Vec2(100.0f, 0.0f), true);
-	}
+	player_.handleInput(frame_time, input_manager_);
+	// do other input here eg pausing
 }
 
 gef::Scene* GameState::LoadSceneAssets(gef::Platform& platform, const char* filename)

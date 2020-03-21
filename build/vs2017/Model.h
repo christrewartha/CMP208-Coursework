@@ -5,13 +5,15 @@
 
 //#include <maths/vector2.h>
 #include "graphics/scene.h"
-#include <graphics/mesh_instance.h>
+//#include <graphics/mesh_instance.h>
 #include <maths\matrix44.h>
 #include <graphics/renderer_3d.h>
 #include "primitive_builder.h"
 #include <system/debug_log.h>
 #include <maths/math_utils.h>
 #include <box2d\box2d.h>
+
+#include "game_object.h"
 
 
 
@@ -23,12 +25,12 @@ namespace gef
 
 
 
-class Model : public gef::MeshInstance
+class Model : public GameObject
 {
 
 public:
 
-	void init(PrimitiveBuilder* primitiveBuilder, gef::Scene* sceneAssets, gef::Platform& platform);
+	void init(gef::Scene* sceneAssets, gef::Platform& platform);
 	void update();
 	void render(gef::Renderer3D& renderer3D);
 	gef::Scene* loadAssets(gef::Platform& platform, const char* filename);

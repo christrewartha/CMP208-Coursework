@@ -21,7 +21,7 @@ void GameLoader::init(gef::Platform& platform)
 	scene_assets_ = LoadSceneAssets(platform, scene_asset_filename);
 
 
-	parser.init(primitive_builder_, scene_assets_, platform);
+	parser.init(scene_assets_, platform);
 
 	models = parser.getModelVector();
 }

@@ -17,9 +17,9 @@ class Parser
 
 public:
 
-	void init(PrimitiveBuilder* primitiveBuilder, gef::Scene* sceneAssets, gef::Platform& platform);
-	void initModels(PrimitiveBuilder* primitiveBuilder, gef::Scene* sceneAssets, gef::Platform& platform);
-	void readFile(PrimitiveBuilder* primitiveBuilder, gef::Scene* sceneAssets, gef::Platform& platform);
+	void init(gef::Scene* sceneAssets, gef::Platform& platform);
+	void initModels(gef::Scene* sceneAssets, gef::Platform& platform);
+	void readFile(gef::Scene* sceneAssets, gef::Platform& platform);
 	std::vector<Model> getModelVector();
 	
 
