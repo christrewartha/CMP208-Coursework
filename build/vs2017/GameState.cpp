@@ -43,6 +43,8 @@ void GameState::init(gef::Platform& platform_)
 	b2Vec2 gravity(0.0f, -9.81f);
 	world_ = new b2World(gravity);
 
+	world_->SetContactListener(&contactManager);
+
 	for (int i = 0; i < models.size(); i++)
 	{
 		models[i].setCollider(world_);
@@ -110,6 +112,9 @@ void GameState::render(gef::SpriteRenderer* sprite_renderer_, gef::Font* font_, 
 	sprite_renderer_->Begin(false);
 
 	drawHUD(sprite_renderer_, font_, fps_);
+
+	font_->RenderText(sprite_renderer_, gef::Vector4(0, 0, -0.9f), 1.0f, 0xffffffff, gef::TJ_LEFT, "Foot Contacts: %i", player_.getFootContacts());
+
 
 	sprite_renderer_->End();
 }

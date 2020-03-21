@@ -223,6 +223,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="ContactManager.cpp" />
     <ClCompile Include="GameLoader.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="MenuState.cpp" />
@@ -237,6 +238,7 @@
     <ClInclude Include="..\..\load_texture.h" />
     <ClInclude Include="..\..\primitive_builder.h" />
     <ClInclude Include="..\..\scene_app.h" />
+    <ClInclude Include="ContactManager.h" />
     <ClInclude Include="GameLoader.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="Player.h" />

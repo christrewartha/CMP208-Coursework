@@ -13,6 +13,7 @@
 #include <vector>
 #include "Parser.h"
 #include "Player.h"
+#include "ContactManager.h"
 
 
 
@@ -63,5 +64,7 @@ private:
 
 	const float CAMERA_OFFSET_Y = 10.0f;
 	const float CAMERA_OFFSET_Z = 20.0f;
+
+	ContactManager contactManager;
 };
 

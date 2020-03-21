@@ -22,6 +22,10 @@ public:
 	void release();
 
 	b2Body* getBody();
+	void startContact();
+	void endContact();
+	int getFootContacts();
+	void setFootContacts(int fc);
 
 
 private:
@@ -31,5 +35,8 @@ private:
 	b2Body* player_body_;
 
 	bool colliding;
+
+	int numberOfContacts;
+	int footContacts;
 };
 

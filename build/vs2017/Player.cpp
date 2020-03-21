@@ -21,7 +21,7 @@ void Player::init(gef::Platform& platform_, b2World* world_)
 	// create a physics body for the player
 	b2BodyDef player_body_def;
 	player_body_def.type = b2_dynamicBody;
-	player_body_def.position = b2Vec2(35.0f, 18.0f);
+	player_body_def.position = b2Vec2(32.0f, 18.0f);
 
 	player_body_ = world_->CreateBody(&player_body_def);
 
@@ -36,9 +36,17 @@ void Player::init(gef::Platform& platform_, b2World* world_)
 	b2FixtureDef player_fixture_def;
 	player_fixture_def.shape = &player_shape;
 	player_fixture_def.density = 1.0f;
-
 	// create the fixture on the rigid body
 	player_body_->CreateFixture(&player_fixture_def);
+
+	b2PolygonShape sensorShape;
+	sensorShape.SetAsBox(0.5f, 0.5f, b2Vec2(0.0f, -0.5f), 0.0f);
+
+	// Create the sensor fixture
+	b2FixtureDef playerSensorFixtureDef;
+	playerSensorFixtureDef.shape = &sensorShape;
+	playerSensorFixtureDef.isSensor = true;
+	player_body_->CreateFixture(&playerSensorFixtureDef);
 
 	b2MassData playerMassData;
 	playerMassData.center = b2Vec2(0.0f, 0.0f);
@@ -52,6 +60,10 @@ void Player::init(gef::Platform& platform_, b2World* world_)
 
 	// create a connection between the rigid body and GameObject
 	player_body_->SetUserData(this);
+
+	colliding = false;
+	numberOfContacts = 0;
+	footContacts = 0;
 }
 
 void Player::update()
@@ -61,7 +73,7 @@ void Player::update()
 
 void Player::handleInput(float frame_time, gef::InputManager* input_manager_)
 {
-	if (input_manager_->keyboard()->IsKeyDown(gef::Keyboard::KC_W))
+	if (input_manager_->keyboard()->IsKeyDown(gef::Keyboard::KC_W) && footContacts > 0)
 	{
 		player_body_->ApplyLinearImpulseToCenter(b2Vec2(0.0f, 20.0f), true);
 	}
@@ -80,7 +92,17 @@ void Player::handleInput(float frame_time, gef::InputManager* input_manager_)
 void Player::render(gef::Renderer3D* renderer_3d_)
 {
 	// draw player
-	renderer_3d_->set_override_material(&primitive_builder_->red_material());
+
+	if (numberOfContacts > 0)
+	{
+		renderer_3d_->set_override_material(&primitive_builder_->red_material());
+	}
+
+	else
+	{
+		renderer_3d_->set_override_material(&primitive_builder_->blue_material());
+	}
+
 	renderer_3d_->DrawMesh(*this);
 	renderer_3d_->set_override_material(NULL);
 }
@@ -94,4 +116,24 @@ void Player::release()
 b2Body* Player::getBody()
 {
 	return player_body_;
+}
+
+void Player::startContact()
+{
+	numberOfContacts++;
+}
+
+void Player::endContact()
+{
+	numberOfContacts--;
+}
+
+int Player::getFootContacts()
+{
+	return footContacts;
+}
+
+void Player::setFootContacts(int fc)
+{
+	footContacts = fc;
 }
