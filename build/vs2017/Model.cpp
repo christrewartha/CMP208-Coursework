@@ -283,7 +283,17 @@ void Model::setCollider(b2World* world)
 	{
 		set_type(PATH);
 
-		bodyDef.type = b2_dynamicBody;
+		if (number == 48)
+		{
+
+			bodyDef.type = b2_dynamicBody;
+		}
+
+		else
+		{
+			bodyDef.type = b2_dynamicBody;
+		}
+
 		bodyDef.position = b2Vec2(position.x(), position.y());
 		bodyDef.fixedRotation = true;
 		body = world->CreateBody(&bodyDef);

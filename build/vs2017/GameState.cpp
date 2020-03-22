@@ -140,13 +140,28 @@ void GameState::setUpJoints()
 	b2Vec2 anchor1 = body1->GetWorldCenter();
 	b2Vec2 anchor2 = body2->GetWorldCenter();
 
-	b2Vec2 groundAnchor1(body1->GetPosition().x, body1->GetPosition().y + 150.0f);
-	b2Vec2 groundAnchor2(body2->GetPosition().x, body2->GetPosition().y + 150.0f);
+	b2Vec2 groundAnchor1(body1->GetPosition().x, 26.25f);
+	b2Vec2 groundAnchor2(body2->GetPosition().x, 26.25f);
 
-	b2PulleyJointDef jointDef;
-	jointDef.Initialize(body1, body2, groundAnchor1, groundAnchor2, anchor1, anchor2, 1.0f);
+	b2PulleyJointDef pulleyJointDef;
+	pulleyJointDef.Initialize(body1, body2, groundAnchor1, groundAnchor2, anchor1, anchor2, 1.0f);
 
-	world_->CreateJoint(&jointDef);
+	world_->CreateJoint(&pulleyJointDef);
+
+
+	// Prismatic joint for left brick
+
+	b2PrismaticJointDef prismaticJointDef;
+	b2Vec2 worldAxis(0.0f, 1.0f);
+	prismaticJointDef.Initialize(body1, body2, anchor1, worldAxis);
+	prismaticJointDef.lowerTranslation = -5.0f;
+	prismaticJointDef.upperTranslation = 2.5f;
+	prismaticJointDef.enableLimit = true;
+	prismaticJointDef.maxMotorForce = 1.0f;
+	prismaticJointDef.motorSpeed = 0.0f;
+	prismaticJointDef.enableMotor = true;
+
+	world_->CreateJoint(&prismaticJointDef);
 }
 
 void GameState::SetupLights()
