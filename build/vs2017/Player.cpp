@@ -22,7 +22,8 @@ void Player::init(gef::Platform& platform_, b2World* world_)
 	// create a physics body for the player
 	b2BodyDef player_body_def;
 	player_body_def.type = b2_dynamicBody;
-	player_body_def.position = b2Vec2(60.0f, 5.0f);
+	player_body_def.position = b2Vec2(5.0f, 5.0f);
+	player_body_def.linearDamping = 10.0f;
 
 	player_body_ = world_->CreateBody(&player_body_def);
 
@@ -37,6 +38,7 @@ void Player::init(gef::Platform& platform_, b2World* world_)
 	b2FixtureDef player_fixture_def;
 	player_fixture_def.shape = &player_shape;
 	player_fixture_def.density = 1.0f;
+	player_fixture_def.restitution = 0.3f;
 	// create the fixture on the rigid body
 	player_body_->CreateFixture(&player_fixture_def);
 
@@ -76,12 +78,22 @@ void Player::init(gef::Platform& platform_, b2World* world_)
 	//footContacts = 0;
 
 	currentImpulse = player_body_->GetMass() / 10.0f;
-	maxImpulse = player_body_->GetMass() * 2.5f;
+	maxImpulse = player_body_->GetMass() * 3.0f;
 }
 
 void Player::update()
 {
 	UpdateFromSimulation(player_body_);
+
+	if (footContacts > 0)
+	{
+		player_body_->SetLinearDamping(1.0f);
+	}
+
+	else
+	{
+		player_body_->SetLinearDamping(0.0f);
+	}
 }
 
 void Player::handleInput(float frame_time, gef::InputManager* input_manager_)
@@ -105,12 +117,12 @@ void Player::handleInput(float frame_time, gef::InputManager* input_manager_)
 
 	if (input_manager_->keyboard()->IsKeyDown(gef::Keyboard::KC_A))
 	{
-		player_body_->ApplyForceToCenter(b2Vec2(-150.0f, 0.0f), true);
+		player_body_->ApplyForceToCenter(b2Vec2(-170.0f, 0.0f), true);
 	}
 
 	if (input_manager_->keyboard()->IsKeyDown(gef::Keyboard::KC_D))
 	{
-		player_body_->ApplyForceToCenter(b2Vec2(150.0f, 0.0f), true);
+		player_body_->ApplyForceToCenter(b2Vec2(170.0f, 0.0f), true);
 	}
 }
 
