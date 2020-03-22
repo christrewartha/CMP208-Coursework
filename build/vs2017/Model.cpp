@@ -36,8 +36,8 @@ void Model::init(gef::Scene* sceneAssets, gef::Platform& platform)
 	rotate.SetIdentity();
 	rotate.RotationY(gef::DegToRad(180));
 
-	gef::Matrix44 finalTrans = scaleMatrix * rotateMatrix * translateMatrix;
-	set_transform(finalTrans);
+	finalTransform = scaleMatrix * rotateMatrix * translateMatrix;
+	set_transform(finalTransform);
 
 	/*translateVect = gef::Vector4(0.0f, 0.0f, 0.0f);
 	translateMatrix.SetIdentity();
@@ -71,6 +71,8 @@ void Model::update()
 {
 	// deal with moving models in here
 	UpdateFromSimulation(body);
+
+	//testUpdate();
 }
 
 void Model::render(gef::Renderer3D& renderer3D)
@@ -108,6 +110,16 @@ gef::Mesh* Model::GetMeshFromAssets(gef::Scene* scene)
 		mesh = scene->meshes.front();
 
 	return mesh;
+}
+
+void Model::UpdateFromSimulation(const b2Body* body)
+{
+	gef::Matrix44 newRotate;
+	newRotate.RotationZ(body->GetAngle());
+
+	gef::Matrix44 newTransform = scaleMatrix * rotateMatrix * newRotate * translateMatrix;
+
+	set_transform(newTransform);
 }
 
 void Model::setNumber(int n)
@@ -204,10 +216,13 @@ void Model::setCollider(b2World* world)
 		set_type(PATH);
 
 		bodyDef.type = b2_staticBody;
-		bodyDef.position = b2Vec2(position.x() - positionOffset, position.y() + 0.5f);
+		bodyDef.position = b2Vec2(position.x(), position.y());
+		bodyDef.angle = gef::RadToDeg(0.0f);
 		body = world->CreateBody(&bodyDef);
 
-		shape.SetAsBox(size.x() / 2, size.y() / 2);
+		body->SetTransform(body->GetPosition(), body->GetAngle());
+
+		shape.SetAsBox(size.x() / 2, size.y() / 2, b2Vec2(-size.x() / 4, size.y() / 2), 0.0f);
 
 		fixtureDef.density = 1.0f;
 		fixtureDef.shape = &shape;
@@ -220,6 +235,7 @@ void Model::setCollider(b2World* world)
 		body->CreateFixture(&fixtureDef);
 
 		body->SetUserData(this);
+		shouldUpdate = true;
 	}
 
 	// Platforms that move by rope
@@ -395,4 +411,47 @@ void Model::offsetBodyPositions()
 bool Model::getShouldUpdate()
 {
 	return shouldUpdate;
+}
+
+void Model::testUpdate()
+{
+	if (shouldUpdate)
+	{
+		translateVect = gef::Vector4(position);
+		rotateVect = gef::Vector4(rotation);
+
+		translateMatrix.SetIdentity();
+		translateMatrix.SetTranslation(translateVect);
+
+		rotateMatrix.SetIdentity();
+		rotateMatrixX.RotationX(gef::DegToRad(rotation.x()));
+
+		if (rotation.y() == 180)
+		{
+			rotateMatrixY.RotationY(gef::DegToRad(1.0f));
+		}
+
+		else if (rotation.y() == 0)
+		{
+			rotateMatrixY.RotationY(gef::DegToRad(180.0f));
+		}
+
+		else
+		{
+			rotateMatrixY.RotationY(gef::DegToRad(rotation.y()));
+		}
+
+		rotateMatrixZ.RotationZ(gef::DegToRad(-rotation.z()));
+		rotateMatrix = rotateMatrixX * rotateMatrixY * rotateMatrixZ;
+
+		scaleVect = gef::Vector4(scale);
+		scaleMatrix.Scale(scaleVect);
+
+		gef::Matrix44 rotate;
+		rotate.SetIdentity();
+		rotate.RotationY(gef::DegToRad(180));
+
+		gef::Matrix44 finalTrans = scaleMatrix * rotateMatrix * translateMatrix;
+		set_transform(finalTrans);
+	}
 }

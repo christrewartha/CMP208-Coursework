@@ -36,6 +36,8 @@ public:
 	gef::Scene* loadAssets(gef::Platform& platform, const char* filename);
 	gef::Mesh* GetMeshFromAssets(gef::Scene* scene);
 
+	void UpdateFromSimulation(const b2Body* body);
+
 	void setNumber(int n);
 	void setName(std::string n);
 	gef::Vector4 getPosition();
@@ -48,6 +50,10 @@ public:
 	void setCollider(b2World* world);
 	void offsetBodyPositions();
 	bool getShouldUpdate();
+
+	void testUpdate();
+
+	
 
 private:
 
@@ -69,6 +75,8 @@ private:
 
 	gef::Vector4 scaleVect;
 	gef::Matrix44 scaleMatrix;
+
+	gef::Matrix44 finalTransform;
 
 	gef::Vector4 size;
 
