@@ -115,7 +115,7 @@ gef::Mesh* Model::GetMeshFromAssets(gef::Scene* scene)
 void Model::UpdateFromSimulation(const b2Body* body)
 {
 	gef::Matrix44 newRotate;
-	newRotate.RotationZ(body->GetAngle());
+	newRotate.RotationZ(body->GetAngle() * body->GetAngularVelocity());
 
 	gef::Matrix44 newTransform = scaleMatrix * rotateMatrix * newRotate * translateMatrix;
 
@@ -215,10 +215,26 @@ void Model::setCollider(b2World* world)
 	{
 		set_type(PATH);
 
-		bodyDef.type = b2_staticBody;
-		bodyDef.position = b2Vec2(position.x(), position.y());
-		bodyDef.angle = gef::RadToDeg(0.0f);
-		body = world->CreateBody(&bodyDef);
+		if (number == 53)
+		{
+			bodyDef.type = b2_kinematicBody;
+			bodyDef.position = b2Vec2(position.x(), position.y());
+			bodyDef.angle = gef::RadToDeg(0.0f);
+			body = world->CreateBody(&bodyDef);
+
+			body->SetAngularVelocity(1.0f);
+
+			shouldUpdate = true;
+		}
+
+		else
+		{
+			bodyDef.type = b2_staticBody;
+			bodyDef.position = b2Vec2(position.x(), position.y());
+			bodyDef.angle = gef::RadToDeg(0.0f);
+			body = world->CreateBody(&bodyDef);
+		}
+
 
 		body->SetTransform(body->GetPosition(), body->GetAngle());
 
@@ -411,47 +427,4 @@ void Model::offsetBodyPositions()
 bool Model::getShouldUpdate()
 {
 	return shouldUpdate;
-}
-
-void Model::testUpdate()
-{
-	if (shouldUpdate)
-	{
-		translateVect = gef::Vector4(position);
-		rotateVect = gef::Vector4(rotation);
-
-		translateMatrix.SetIdentity();
-		translateMatrix.SetTranslation(translateVect);
-
-		rotateMatrix.SetIdentity();
-		rotateMatrixX.RotationX(gef::DegToRad(rotation.x()));
-
-		if (rotation.y() == 180)
-		{
-			rotateMatrixY.RotationY(gef::DegToRad(1.0f));
-		}
-
-		else if (rotation.y() == 0)
-		{
-			rotateMatrixY.RotationY(gef::DegToRad(180.0f));
-		}
-
-		else
-		{
-			rotateMatrixY.RotationY(gef::DegToRad(rotation.y()));
-		}
-
-		rotateMatrixZ.RotationZ(gef::DegToRad(-rotation.z()));
-		rotateMatrix = rotateMatrixX * rotateMatrixY * rotateMatrixZ;
-
-		scaleVect = gef::Vector4(scale);
-		scaleMatrix.Scale(scaleVect);
-
-		gef::Matrix44 rotate;
-		rotate.SetIdentity();
-		rotate.RotationY(gef::DegToRad(180));
-
-		gef::Matrix44 finalTrans = scaleMatrix * rotateMatrix * translateMatrix;
-		set_transform(finalTrans);
-	}
 }
