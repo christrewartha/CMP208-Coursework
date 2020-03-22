@@ -62,12 +62,6 @@ void GameState::update(float frame_time, gef::InputManager* input_manager_, Stat
 	handleInput(frame_time, input_manager_);
 
 	UpdateSimulation(frame_time);
-
-
-	/*for (int i = 0; i < models.size(); i++)
-	{
-		models[i].update();
-	}*/
 }
 
 void GameState::render(gef::SpriteRenderer* sprite_renderer_, gef::Font* font_, float fps_, gef::Platform& platform_)
@@ -132,6 +126,23 @@ void GameState::release()
 
 	delete renderer_3d_;
 	renderer_3d_ = NULL;
+}
+
+void GameState::setUpJoints()
+{
+	// Pulley joint for bricks
+
+	b2Body* body1 = models[48].getBody();
+	b2Body* body2 = models[51].getBody();
+
+	b2Vec2 anchor1 = body1->GetWorldCenter();
+	b2Vec2 anchor2 = body2->GetWorldCenter();
+
+	b2Vec2 groundAnchor1(body1->GetPosition().x, body1->GetPosition().y + 5.0f);
+	b2Vec2 groundAnchor2(body2->GetPosition().x, body2->GetPosition().y + 5.0f);
+
+	b2PulleyJointDef jointDef;
+	jointDef.Initialize(body1, body2, groundAnchor1, groundAnchor2, anchor1, anchor2, 1.0f);
 }
 
 void GameState::SetupLights()
