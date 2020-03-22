@@ -285,17 +285,23 @@ void Model::setCollider(b2World* world)
 
 		bodyDef.type = b2_dynamicBody;
 		bodyDef.position = b2Vec2(position.x(), position.y());
+		bodyDef.fixedRotation = true;
 		body = world->CreateBody(&bodyDef);
 
 		shape.SetAsBox(size.x() / 2, size.y() / 2, b2Vec2(0.0f, size.y() / 2), 0.0f);
 
-		fixtureDef.density = 0.0f;
+		fixtureDef.density = 1.0f;
 		fixtureDef.shape = &shape;
 		fixtureDef.friction = 0.0f; // between 0 and 1
 		body->CreateFixture(&fixtureDef);
 
+		// Create sensor
+		shape.SetAsBox(size.x() / 2.5f, size.y() / 4, b2Vec2(size.x() / 4, size.y() / 1.5), 0.0f);
+		fixtureDef.isSensor = true;
+		body->CreateFixture(&fixtureDef);
+
 		massData.center = b2Vec2(0.0f, 0.0f);
-		massData.mass = 0.f;
+		massData.mass = 1.f;
 		massData.I = 1.0f;
 		body->SetMassData(&massData);
 

@@ -50,6 +50,8 @@ void GameState::init(gef::Platform& platform_)
 		models[i].setCollider(world_);
 	}
 
+	setUpJoints();
+
 	player_.init(platform_, world_);
 
 	timerStarted = false;
@@ -138,11 +140,13 @@ void GameState::setUpJoints()
 	b2Vec2 anchor1 = body1->GetWorldCenter();
 	b2Vec2 anchor2 = body2->GetWorldCenter();
 
-	b2Vec2 groundAnchor1(body1->GetPosition().x, body1->GetPosition().y + 5.0f);
-	b2Vec2 groundAnchor2(body2->GetPosition().x, body2->GetPosition().y + 5.0f);
+	b2Vec2 groundAnchor1(body1->GetPosition().x, body1->GetPosition().y + 150.0f);
+	b2Vec2 groundAnchor2(body2->GetPosition().x, body2->GetPosition().y + 150.0f);
 
 	b2PulleyJointDef jointDef;
 	jointDef.Initialize(body1, body2, groundAnchor1, groundAnchor2, anchor1, anchor2, 1.0f);
+
+	world_->CreateJoint(&jointDef);
 }
 
 void GameState::SetupLights()
