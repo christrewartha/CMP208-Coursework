@@ -47,9 +47,9 @@ public:
 
 	void setCollider(b2World* world);
 	void offsetBodyPositions();
+	bool getShouldUpdate();
 
 private:
-
 
 	int number;
 	std::string name;
@@ -83,4 +83,5 @@ private:
 	// do the above like player pls
 
 	float positionOffset;
+	bool shouldUpdate;
 };

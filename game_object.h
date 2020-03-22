@@ -8,7 +8,8 @@ enum OBJECT_TYPE
 {
 	PLAYER,
 	PATH,
-	WALL
+	WALL,
+	CRATE
 };
 
 class GameObject : public gef::MeshInstance

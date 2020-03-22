@@ -64,12 +64,13 @@ void Model::init(gef::Scene* sceneAssets, gef::Platform& platform)
 	body = NULL;
 
 	positionOffset = 0.0f;
+	shouldUpdate = false;
 }
 
 void Model::update()
 {
 	// deal with moving models in here
-
+	UpdateFromSimulation(body);
 }
 
 void Model::render(gef::Renderer3D& renderer3D)
@@ -171,7 +172,7 @@ void Model::setCollider(b2World* world)
 		body->CreateFixture(&fixtureDef);
 
 		// Create sensor
-		shape.SetAsBox(size.x() / 2.5f, size.y() / 4, b2Vec2(0.0f, size.y() / 4), 0); // size.y / 2 maybe for centre
+		shape.SetAsBox(size.x() / 2, size.y() / 4, b2Vec2(0.0f, size.y() / 4), 0); // size.y / 2 maybe for centre
 		fixtureDef.isSensor = true;
 		body->CreateFixture(&fixtureDef);
 
@@ -243,27 +244,7 @@ void Model::setCollider(b2World* world)
 	// Platforms that move by player collision
 	else if (name == "Prop_Crate")
 	{
-		set_type(PATH);
-
-		bodyDef.type = b2_dynamicBody;
-		bodyDef.position = b2Vec2(position.x(), position.y());
-		body = world->CreateBody(&bodyDef);
-
-		shape.SetAsBox(size.x() / 2, size.y() / 2);
-
-		fixtureDef.density = 1.0f;
-		fixtureDef.shape = &shape;
-		fixtureDef.friction = 0.5f; // between 0 and 1
-		body->CreateFixture(&fixtureDef);
-
-		body->SetUserData(this);
-	}
-
-
-	// Platforms that move by player collision
-	else if (name == "Prop_Crate")
-	{
-		set_type(PATH);
+		set_type(CRATE);
 
 		bodyDef.type = b2_staticBody;
 		bodyDef.position = b2Vec2(position.x(), position.y());
@@ -271,12 +252,19 @@ void Model::setCollider(b2World* world)
 
 		shape.SetAsBox(size.x() / 2, size.y() / 2);
 
-		fixtureDef.density = 1.0f;
+		fixtureDef.density = 100.0f;
 		fixtureDef.shape = &shape;
-		fixtureDef.friction = 0.5f; // between 0 and 1
+		fixtureDef.friction = 1.0f; // between 0 and 1
 		body->CreateFixture(&fixtureDef);
 
+		massData.center = b2Vec2(0.0f, 0.0f);
+		massData.mass = 0.f;
+		//playerMassData.mass = 40.f;
+		massData.I = 1.0f;
+		body->SetMassData(&massData);
+
 		body->SetUserData(this);
+		shouldUpdate = true;
 	}
 
 	else if (name == "Prop_Slide_Top")
@@ -401,4 +389,9 @@ void Model::offsetBodyPositions()
 	default:
 		break;
 	}
+}
+
+bool Model::getShouldUpdate()
+{
+	return shouldUpdate;
 }

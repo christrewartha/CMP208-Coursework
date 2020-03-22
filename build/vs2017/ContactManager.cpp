@@ -47,6 +47,11 @@ void ContactManager::BeginContact(b2Contact* contact)
 			}
 		}
 
+		if (objectB->type() == CRATE)
+		{
+			destroyList.insert(bodyB);
+		}
+
 		objectA->startContact();
 	}
 
@@ -64,8 +69,14 @@ void ContactManager::BeginContact(b2Contact* contact)
 			}
 		}
 
+		if (objectA->type() == CRATE)
+		{
+			destroyList.insert(bodyA);
+		}
+
 		objectB->startContact();
 	}
+	
 }
 
 void ContactManager::EndContact(b2Contact* contact)
@@ -119,4 +130,16 @@ void ContactManager::EndContact(b2Contact* contact)
 
 		objectB->endContact();
 	}
+}
+
+std::set<b2Body*> ContactManager::getDestroyList()
+{
+	return destroyList;
+}
+
+void ContactManager::deleteDestroyList()
+{
+	// TODO: clean up pointers?
+
+	destroyList.clear();
 }

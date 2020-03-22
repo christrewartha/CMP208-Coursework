@@ -66,5 +66,7 @@ private:
 	const float CAMERA_OFFSET_Z = 20.0f;
 
 	ContactManager contactManager;
+
+	std::set<b2Body*> destroyList;
 };
 

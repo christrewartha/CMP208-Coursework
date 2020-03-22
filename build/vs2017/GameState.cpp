@@ -160,8 +160,33 @@ void GameState::UpdateSimulation(float frame_time)
 
 	world_->Step(timeStep, velocityIterations, positionIterations);
 
+	destroyList = contactManager.getDestroyList();
+
+	if (!destroyList.empty())
+	{
+		for (auto it = destroyList.begin(); it != destroyList.end();)
+		{
+			world_->DestroyBody(*it);
+			destroyList.erase(it++);
+
+			if (destroyList.empty())
+			{
+				contactManager.deleteDestroyList();
+				break;
+			}
+		}
+	}
+
 	// update object visuals from simulation data
 	player_.update();
+
+	for (int i = 0; i < models.size(); i++)
+	{
+		if (models[i].getShouldUpdate())
+		{
+			models[i].update();
+		}
+	}
 
 	// don't have to update the ground visuals as it is static
 
