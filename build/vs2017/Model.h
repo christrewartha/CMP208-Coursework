@@ -51,8 +51,8 @@ public:
 	void offsetBodyPositions();
 	bool getShouldUpdate();
 
-	void testUpdate();
-
+	void setUpJoints();
+	b2Body* getBody();
 	
 
 private:
@@ -92,4 +92,5 @@ private:
 
 	float positionOffset;
 	bool shouldUpdate;
+	bool spinning;
 };

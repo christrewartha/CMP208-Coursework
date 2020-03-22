@@ -65,6 +65,7 @@ void Model::init(gef::Scene* sceneAssets, gef::Platform& platform)
 
 	positionOffset = 0.0f;
 	shouldUpdate = false;
+	spinning = false;
 }
 
 void Model::update()
@@ -115,10 +116,33 @@ gef::Mesh* Model::GetMeshFromAssets(gef::Scene* scene)
 void Model::UpdateFromSimulation(const b2Body* body)
 {
 	gef::Matrix44 newRotate;
-	newRotate.RotationZ(body->GetAngle() * body->GetAngularVelocity());
+	gef::Matrix44 newTransform;
 
-	gef::Matrix44 newTransform = scaleMatrix * rotateMatrix * newRotate * translateMatrix;
+	if (spinning)
+	{
+		newRotate.RotationZ(body->GetAngle() * body->GetAngularVelocity());
 
+		newTransform = scaleMatrix * rotateMatrix * newRotate * translateMatrix;
+	}
+
+	else
+	{
+		newTransform = scaleMatrix * rotateMatrix * translateMatrix;
+	
+
+	// setup the object translation
+	gef::Vector4 object_translation(body->GetPosition().x, body->GetPosition().y, 0.0f);
+
+	// build object transformation matrix
+	gef::Matrix44 object_transform;
+	object_transform.SetIdentity();
+	object_transform.SetTranslation(object_translation);
+	set_transform(object_transform);
+
+	newTransform = scaleMatrix * rotateMatrix * object_transform;
+
+
+	}
 	set_transform(newTransform);
 }
 
@@ -224,6 +248,7 @@ void Model::setCollider(b2World* world)
 
 			body->SetAngularVelocity(1.0f);
 
+			spinning = true;
 			shouldUpdate = true;
 		}
 
@@ -251,7 +276,6 @@ void Model::setCollider(b2World* world)
 		body->CreateFixture(&fixtureDef);
 
 		body->SetUserData(this);
-		//shouldUpdate = true;
 	}
 
 	// Platforms that move by rope
@@ -259,18 +283,24 @@ void Model::setCollider(b2World* world)
 	{
 		set_type(PATH);
 
-		bodyDef.type = b2_staticBody;
-		bodyDef.position = b2Vec2(position.x(), position.y() + positionOffset);
+		bodyDef.type = b2_dynamicBody;
+		bodyDef.position = b2Vec2(position.x(), position.y());
 		body = world->CreateBody(&bodyDef);
 
-		shape.SetAsBox(size.x() / 2, size.y() / 2);
+		shape.SetAsBox(size.x() / 2, size.y() / 2, b2Vec2(0.0f, size.y() / 2), 0.0f);
 
-		fixtureDef.density = 1.0f;
+		fixtureDef.density = 0.0f;
 		fixtureDef.shape = &shape;
-		fixtureDef.friction = 0.5f; // between 0 and 1
+		fixtureDef.friction = 0.0f; // between 0 and 1
 		body->CreateFixture(&fixtureDef);
 
+		massData.center = b2Vec2(0.0f, 0.0f);
+		massData.mass = 0.f;
+		massData.I = 1.0f;
+		body->SetMassData(&massData);
+
 		body->SetUserData(this);
+		shouldUpdate = true;
 	}
 
 	// Platforms that move by player collision
@@ -427,4 +457,9 @@ void Model::offsetBodyPositions()
 bool Model::getShouldUpdate()
 {
 	return shouldUpdate;
+}
+
+b2Body* Model::getBody()
+{
+	return body;
 }

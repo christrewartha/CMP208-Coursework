@@ -30,6 +30,8 @@ public:
 	void render(gef::SpriteRenderer* sprite_renderer_, gef::Font* font_, float fps_, gef::Platform& platform) override;
 	void release() override;
 
+	void setUpJoints();
+
 
 private:
 
