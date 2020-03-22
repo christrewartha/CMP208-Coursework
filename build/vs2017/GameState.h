@@ -68,5 +68,8 @@ private:
 	ContactManager contactManager;
 
 	std::set<b2Body*> destroyList;
+
+	b2Timer timer;
+	bool timerStarted;
 };
 

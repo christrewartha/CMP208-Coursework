@@ -244,27 +244,28 @@ void Model::setCollider(b2World* world)
 	// Platforms that move by player collision
 	else if (name == "Prop_Crate")
 	{
-		set_type(CRATE);
+	
+			set_type(CRATE);
 
-		bodyDef.type = b2_staticBody;
-		bodyDef.position = b2Vec2(position.x(), position.y());
-		body = world->CreateBody(&bodyDef);
+			bodyDef.type = b2_dynamicBody;
+			bodyDef.position = b2Vec2(position.x(), position.y());
+			body = world->CreateBody(&bodyDef);
 
-		shape.SetAsBox(size.x() / 2, size.y() / 2);
+			shape.SetAsBox(size.x() / 2, size.y() / 2, b2Vec2(0.0f, 0.5f), 0.0f); // TODO: do this if shape has to update as moving it doesnt work then, update moves it y
 
-		fixtureDef.density = 100.0f;
-		fixtureDef.shape = &shape;
-		fixtureDef.friction = 1.0f; // between 0 and 1
-		body->CreateFixture(&fixtureDef);
+			fixtureDef.density = 0.0f;
+			fixtureDef.shape = &shape;
+			fixtureDef.friction = 0.25f; // between 0 and 1
+			body->CreateFixture(&fixtureDef);
 
-		massData.center = b2Vec2(0.0f, 0.0f);
-		massData.mass = 0.f;
-		//playerMassData.mass = 40.f;
-		massData.I = 1.0f;
-		body->SetMassData(&massData);
+			massData.center = b2Vec2(0.0f, 0.0f);
+			massData.mass = 0.f;
+			massData.I = 1.0f;
+			body->SetMassData(&massData);
 
-		body->SetUserData(this);
-		shouldUpdate = true;
+			body->SetUserData(this);
+			shouldUpdate = true;
+		
 	}
 
 	else if (name == "Prop_Slide_Top")

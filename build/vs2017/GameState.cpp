@@ -51,6 +51,8 @@ void GameState::init(gef::Platform& platform_)
 	}
 
 	player_.init(platform_, world_);
+
+	timerStarted = false;
 }
 
 void GameState::update(float frame_time, gef::InputManager* input_manager_, StateMachine* stateMachine)
@@ -96,10 +98,7 @@ void GameState::render(gef::SpriteRenderer* sprite_renderer_, gef::Font* font_, 
 		models[i].render(*renderer_3d_);
 	}
 
-	/*for (int i = 0; i < 25; i++)
-	{
-		models[i].render(*renderer_3d_);
-	}*/
+	//models[32].render(*renderer_3d_);
 
 	// draw ground
 	//renderer_3d_->DrawMesh(ground_);
@@ -117,6 +116,7 @@ void GameState::render(gef::SpriteRenderer* sprite_renderer_, gef::Font* font_, 
 
 	font_->RenderText(sprite_renderer_, gef::Vector4(0, 15, -0.9f), 1.0f, 0xffffffff, gef::TJ_LEFT, "Impulse: %f", player_.getImpulse());
 
+	font_->RenderText(sprite_renderer_, gef::Vector4(400, 0, -0.9f), 1.0f, 0xffffffff, gef::TJ_LEFT, "Timer:  %.3f", timer.GetMilliseconds() / 1000);
 
 	sprite_renderer_->End();
 }
@@ -160,20 +160,32 @@ void GameState::UpdateSimulation(float frame_time)
 
 	world_->Step(timeStep, velocityIterations, positionIterations);
 
-	destroyList = contactManager.getDestroyList();
-
-	if (!destroyList.empty())
+	if (!contactManager.getDestroyList().empty())
 	{
-		for (auto it = destroyList.begin(); it != destroyList.end();)
-		{
-			world_->DestroyBody(*it);
-			destroyList.erase(it++);
+		destroyList = contactManager.getDestroyList();
 
-			if (destroyList.empty())
+		if (!timerStarted)
+		{
+			timer.Reset();
+			timerStarted = true;
+		}
+
+		if (timer.GetMilliseconds() / 1000 > 3.0f)
+		{
+
+			for (auto it = destroyList.begin(); it != destroyList.end();)
 			{
-				contactManager.deleteDestroyList();
-				break;
+				world_->DestroyBody(*it);
+				destroyList.erase(it++);
+
+				if (destroyList.empty())
+				{
+					contactManager.deleteDestroyList();
+					break;
+				}
 			}
+
+			timerStarted = false;
 		}
 	}
 
