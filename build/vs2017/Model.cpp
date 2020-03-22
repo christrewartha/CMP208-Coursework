@@ -230,12 +230,12 @@ void Model::setCollider(b2World* world)
 		body->CreateFixture(&fixtureDef);
 
 		// Create sensor
-		shape.SetAsBox(size.x() / 2.5f, size.y() / 4, b2Vec2(0.0f, size.y() / 4), 0);
+		shape.SetAsBox(size.x() / 2.1f, size.y() / 4, b2Vec2(-size.x() / 4, size.y() / 1.5f), 0.0f);
 		fixtureDef.isSensor = true;
 		body->CreateFixture(&fixtureDef);
 
 		body->SetUserData(this);
-		shouldUpdate = true;
+		//shouldUpdate = true;
 	}
 
 	// Platforms that move by rope
