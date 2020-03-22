@@ -22,7 +22,7 @@ void Player::init(gef::Platform& platform_, b2World* world_)
 	// create a physics body for the player
 	b2BodyDef player_body_def;
 	player_body_def.type = b2_dynamicBody;
-	player_body_def.position = b2Vec2(32.0f, 20.0f);
+	player_body_def.position = b2Vec2(60.0f, 5.0f);
 
 	player_body_ = world_->CreateBody(&player_body_def);
 
@@ -76,7 +76,7 @@ void Player::init(gef::Platform& platform_, b2World* world_)
 	//footContacts = 0;
 
 	currentImpulse = player_body_->GetMass() / 10.0f;
-	maxImpulse = player_body_->GetMass() * 2.25f;
+	maxImpulse = player_body_->GetMass() * 2.5f;
 }
 
 void Player::update()

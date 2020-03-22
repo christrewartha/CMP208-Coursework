@@ -172,7 +172,7 @@ void Model::setCollider(b2World* world)
 		body->CreateFixture(&fixtureDef);
 
 		// Create sensor
-		shape.SetAsBox(size.x() / 2, size.y() / 4, b2Vec2(0.0f, size.y() / 4), 0); // size.y / 2 maybe for centre
+		shape.SetAsBox((size.x() / 2.f) - 1.0f, size.y() / 4, b2Vec2(0.0f, size.y() / 4), 0); // size.y / 2 maybe for centre
 		fixtureDef.isSensor = true;
 		body->CreateFixture(&fixtureDef);
 
