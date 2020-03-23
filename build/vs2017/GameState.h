@@ -14,6 +14,7 @@
 #include "Parser.h"
 #include "Player.h"
 #include "ContactManager.h"
+#include "box2d/box2d.h"
 
 
 
@@ -65,7 +66,7 @@ private:
 	std::vector<Model> models;
 
 	const float CAMERA_OFFSET_Y = 10.0f;
-	const float CAMERA_OFFSET_Z = 20.0f;
+	const float CAMERA_OFFSET_Z = 60.0f; // should be 20
 
 	ContactManager contactManager;
 

@@ -74,6 +74,12 @@ void Model::update()
 	UpdateFromSimulation(body);
 
 	//testUpdate();
+
+
+	if (number == 57)
+	{
+		//body->ApplyLinearImpulseToCenter(b2Vec2(1.0f, 0.0f), true);
+	}
 }
 
 void Model::render(gef::Renderer3D& renderer3D)
@@ -127,7 +133,7 @@ void Model::UpdateFromSimulation(const b2Body* body)
 
 	else
 	{
-		newTransform = scaleMatrix * rotateMatrix * translateMatrix;
+		//newTransform = scaleMatrix * rotateMatrix * translateMatrix;
 	
 
 	// setup the object translation
@@ -140,9 +146,8 @@ void Model::UpdateFromSimulation(const b2Body* body)
 	set_transform(object_transform);
 
 	newTransform = scaleMatrix * rotateMatrix * object_transform;
-
-
 	}
+
 	set_transform(newTransform);
 }
 
@@ -252,11 +257,12 @@ void Model::setCollider(b2World* world)
 			shouldUpdate = true;
 		}
 
-		else if (number == 56)
+		else if (number == 56 || number == 57)
 		{
 			bodyDef.type = b2_dynamicBody;
 			bodyDef.position = b2Vec2(position.x(), position.y());
 			bodyDef.angle = gef::RadToDeg(0.0f);
+			bodyDef.fixedRotation = true;
 			body = world->CreateBody(&bodyDef);
 
 			shouldUpdate = true;

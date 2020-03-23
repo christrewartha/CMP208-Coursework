@@ -94,11 +94,6 @@ void GameState::render(gef::SpriteRenderer* sprite_renderer_, gef::Font* font_, 
 		models[i].render(*renderer_3d_);
 	}
 
-	//models[32].render(*renderer_3d_);
-
-	// draw ground
-	//renderer_3d_->DrawMesh(ground_);
-
 	player_.render(renderer_3d_);
 
 	renderer_3d_->End();
@@ -182,6 +177,35 @@ void GameState::setUpJoints()
 	liftPrismaticJointDef.Initialize(body1, body2, anchor2, liftAxis);
 
 	liftPrismaticJoint = (b2PrismaticJoint*) world_->CreateJoint(&liftPrismaticJointDef);
+
+
+
+
+	// Rope joint
+
+	body1 = models[57].getBody();
+	body2 = models[62].getBody();
+
+	anchor1 = body1->GetWorldCenter();
+	anchor2 = body2->GetWorldCenter();
+
+	b2RopeJointDef ropeJointDef;
+
+	ropeJointDef.bodyA = body1; // Platform
+	ropeJointDef.bodyB = body2; // Roof
+
+	float diff = body2->GetPosition().x - body1->GetPosition().x;
+
+	ropeJointDef.localAnchorA = b2Vec2(0.0f, 0.0f);
+	ropeJointDef.localAnchorB = b2Vec2(diff, 0.0f);
+	ropeJointDef.maxLength = 10.0f;
+	
+	world_->CreateJoint(&ropeJointDef);
+
+	ropeJointDef.localAnchorA = b2Vec2(0.0f, 0.0f);
+	ropeJointDef.localAnchorB = b2Vec2(diff + 1.0f, 0.0f);
+	world_->CreateJoint(&ropeJointDef);
+
 }
 
 void GameState::SetupLights()
