@@ -15,6 +15,7 @@
 #include "Player.h"
 #include "ContactManager.h"
 #include "box2d/box2d.h"
+#include <graphics/sprite.h>
 
 
 
@@ -77,7 +78,24 @@ private:
 
 	b2PrismaticJoint* liftPrismaticJoint;
 	b2PrismaticJointDef liftPrismaticJointDef;
+
+	b2RopeJoint* ropeJointA;
+	b2RopeJoint* ropeJointB;
+	b2RopeJoint* ropeJointC;
+	b2RopeJoint* ropeJointD;
 	
 	b2Timer liftTimer;
+
+	b2Vec2 coordsA;
+	b2Vec2 coordsB;
+	b2Vec2 coordsC;
+	b2Vec2 coordsD;
+
+	GameObject pointA;
+	GameObject pointB;
+	GameObject pointC;
+	GameObject pointD;
+
+	PrimitiveBuilder* primitiveBuilderTest;
 };
 

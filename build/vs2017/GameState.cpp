@@ -55,6 +55,12 @@ void GameState::init(gef::Platform& platform_)
 	player_.init(platform_, world_);
 
 	crateTimerStarted = false;
+
+	primitiveBuilderTest = new PrimitiveBuilder(platform_);
+	pointA.set_mesh(primitiveBuilderTest->GetDefaultCubeMesh());
+	pointB.set_mesh(primitiveBuilderTest->GetDefaultCubeMesh());
+	pointC.set_mesh(primitiveBuilderTest->GetDefaultCubeMesh());
+	pointD.set_mesh(primitiveBuilderTest->GetDefaultCubeMesh());
 }
 
 void GameState::update(float frame_time, gef::InputManager* input_manager_, StateMachine* stateMachine)
@@ -64,6 +70,34 @@ void GameState::update(float frame_time, gef::InputManager* input_manager_, Stat
 	handleInput(frame_time, input_manager_);
 
 	UpdateSimulation(frame_time);
+
+	coordsA = ropeJointC->GetBodyA()->GetWorldPoint(ropeJointC->GetLocalAnchorA());
+	coordsB = ropeJointC->GetBodyB()->GetWorldPoint(ropeJointC->GetLocalAnchorB());
+	coordsC = ropeJointD->GetBodyA()->GetWorldPoint(ropeJointD->GetLocalAnchorA());
+	coordsD = ropeJointD->GetBodyB()->GetWorldPoint(ropeJointD->GetLocalAnchorB());
+
+
+	gef::Vector4 transVect = gef::Vector4(coordsA.x, coordsA.y, 1.0f);
+	gef::Matrix44 transMat;
+	transMat.SetIdentity();
+	transMat.SetTranslation(transVect);
+	pointA.set_transform(transMat);
+
+	transVect = gef::Vector4(coordsB.x, coordsB.y, 1.0f);
+	transMat.SetIdentity();
+	transMat.SetTranslation(transVect);
+	pointB.set_transform(transMat);
+
+	transVect = gef::Vector4(coordsC.x, coordsC.y, 1.0f);
+	transMat.SetIdentity();
+	transMat.SetTranslation(transVect);
+	pointC.set_transform(transMat);
+
+	transVect = gef::Vector4(coordsD.x, coordsD.y, 1.0f);
+	transMat.SetIdentity();
+	transMat.SetTranslation(transVect);
+	pointD.set_transform(transMat);
+
 }
 
 void GameState::render(gef::SpriteRenderer* sprite_renderer_, gef::Font* font_, float fps_, gef::Platform& platform_)
@@ -108,6 +142,17 @@ void GameState::render(gef::SpriteRenderer* sprite_renderer_, gef::Font* font_, 
 	font_->RenderText(sprite_renderer_, gef::Vector4(0, 15, -0.9f), 1.0f, 0xffffffff, gef::TJ_LEFT, "Impulse: %f", player_.getImpulse());
 
 	font_->RenderText(sprite_renderer_, gef::Vector4(400, 0, -0.9f), 1.0f, 0xffffffff, gef::TJ_LEFT, "Timer:  %.3f", crateTimer.GetMilliseconds() / 1000);
+
+
+	renderer_3d_->set_override_material(&primitiveBuilderTest->red_material());
+	renderer_3d_->DrawMesh(pointA);
+	renderer_3d_->set_override_material(&primitiveBuilderTest->blue_material());
+	renderer_3d_->DrawMesh(pointB);
+	renderer_3d_->set_override_material(&primitiveBuilderTest->red_material());
+	renderer_3d_->DrawMesh(pointC);
+	renderer_3d_->set_override_material(&primitiveBuilderTest->blue_material());
+	renderer_3d_->DrawMesh(pointD);
+	renderer_3d_->set_override_material(NULL);
 
 	sprite_renderer_->End();
 }
@@ -183,28 +228,44 @@ void GameState::setUpJoints()
 
 	// Rope joint
 
-	body1 = models[57].getBody();
-	body2 = models[62].getBody();
-
-	anchor1 = body1->GetWorldCenter();
-	anchor2 = body2->GetWorldCenter();
+	body1 = models[57].getBody(); // Platform 1
+	body2 = models[62].getBody(); // Roof
 
 	b2RopeJointDef ropeJointDef;
 
 	ropeJointDef.bodyA = body1; // Platform
 	ropeJointDef.bodyB = body2; // Roof
 
-	float diff = body2->GetPosition().x - body1->GetPosition().x;
+	float diff = body2->GetPosition().x - body1->GetPosition().x; // Difference from center of roof to body
 
-	ropeJointDef.localAnchorA = b2Vec2(0.0f, 0.0f);
-	ropeJointDef.localAnchorB = b2Vec2(diff, 0.0f);
-	ropeJointDef.maxLength = 10.0f;
-	
-	world_->CreateJoint(&ropeJointDef);
+	ropeJointDef.localAnchorA = b2Vec2(-3.0f, 0.5f); // Slightly left of center x of body
+	ropeJointDef.localAnchorB =  b2Vec2(abs(diff) - 3.0f, 0.0f); // Slightly left of point above body on roof
+	ropeJointDef.maxLength = 11.5f;
 
-	ropeJointDef.localAnchorA = b2Vec2(0.0f, 0.0f);
-	ropeJointDef.localAnchorB = b2Vec2(diff + 1.0f, 0.0f);
-	world_->CreateJoint(&ropeJointDef);
+	ropeJointA = (b2RopeJoint*) world_->CreateJoint(&ropeJointDef);
+
+	ropeJointDef.localAnchorA = b2Vec2(0.0f, 0.5f); // Slightly right of center x of body
+	ropeJointDef.localAnchorB = b2Vec2(abs(diff), 0.0f); // Slightly right of point above body on roof
+	ropeJointB = (b2RopeJoint*) world_->CreateJoint(&ropeJointDef);
+
+
+	b2Body* body3 = models[58].getBody();
+
+	ropeJointDef.bodyA = body3; // Platform 2
+
+	diff = body2->GetPosition().x - body3->GetPosition().x;
+
+	// left rope
+	ropeJointDef.localAnchorA = b2Vec2(-2.0f, 0.5f);
+	ropeJointDef.localAnchorB = b2Vec2(abs(diff) - 2.0f, 0.0f);
+	ropeJointDef.maxLength = 7.0f;
+
+	ropeJointC = (b2RopeJoint*)world_->CreateJoint(&ropeJointDef);
+
+	// right rope
+	ropeJointDef.localAnchorA = b2Vec2(0.0f, 0.5f); // Slightly right of center x of body
+	ropeJointDef.localAnchorB = b2Vec2(abs(diff), 0.0f); // Slightly right of point above body on roof
+	ropeJointD = (b2RopeJoint*)world_->CreateJoint(&ropeJointDef);
 
 }
 

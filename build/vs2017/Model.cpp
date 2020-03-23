@@ -257,7 +257,7 @@ void Model::setCollider(b2World* world)
 			shouldUpdate = true;
 		}
 
-		else if (number == 56 || number == 57)
+		else if (number == 56 || number == 57 || number == 58)
 		{
 			bodyDef.type = b2_dynamicBody;
 			bodyDef.position = b2Vec2(position.x(), position.y());
