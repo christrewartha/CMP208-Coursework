@@ -338,7 +338,6 @@ void Model::setCollider(b2World* world)
 	// Platforms that move by player collision
 	else if (name == "Prop_Crate")
 	{
-	
 			set_type(CRATE);
 
 			bodyDef.type = b2_dynamicBody;

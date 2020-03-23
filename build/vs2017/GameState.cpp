@@ -69,7 +69,7 @@ void GameState::init(gef::Platform& platform_)
 	prismaticBrickJointDef.setUpJoint(models, 48, 51, b2Vec2(0.0f, -1.0f), Joint::PRISMATIC);
 	prismaticBrickJoint = (b2PrismaticJoint*)world_->CreateJoint(&prismaticBrickJointDef.getPrismaticJointDef());
 
-	prismaticLiftJointDef.setUpJoint(models, 82, 56, b2Vec2(0.0f, 1.0f), Joint::PRISMATIC, true, 1000.0f, 10.0f, true, -5.0f, 8.0f);
+	prismaticLiftJointDef.setUpJoint(models, 82, 56, b2Vec2(0.0f, 1.0f), Joint::PRISMATIC, true, 1000.0f, 10.0f, true, -8.0f, 8.0f);
 	prismaticLiftJoint = (b2PrismaticJoint*)world_->CreateJoint(&prismaticLiftJointDef.getPrismaticJointDef());
 
 	ropePlatformOneLeftJointDef.setUpJoint(models, 57, 62, 11.5f, Joint::LEFT, Joint::ROPE);
