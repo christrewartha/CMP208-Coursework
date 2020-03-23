@@ -28,6 +28,7 @@ public:
 
 	void setUpJoint(std::vector<Model> models, int firstModel, int secondModel, JointType type);
 	void setUpJoint(std::vector<Model> models, int firstModel, int secondModel, b2Vec2 axis, JointType type);
+	void setUpJoint(std::vector<Model> models, int firstModel, int secondModel, b2Vec2 axis, JointType type, bool enableMotor, float maxForce, float motorSpeed, bool enableLimit, float lowerLimit, float upperLimit);
 	void setUpJoint(std::vector<Model> models, int firstModel, int secondModel, float maxLength, Side side, JointType type);
 	void setJointType(JointType type);
 	b2PulleyJointDef getPulleyJointDef();

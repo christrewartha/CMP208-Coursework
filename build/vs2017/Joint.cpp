@@ -44,6 +44,28 @@ void Joint::setUpJoint(std::vector<Model> models, int firstModel, int secondMode
 	prismaticJointDef.Initialize(firstBrick, secondBrick, firstBrickAnchor, worldAxis);
 }
 
+void Joint::setUpJoint(std::vector<Model> models, int firstModel, int secondModel, b2Vec2 axis, JointType type, bool enableMotor, float maxForce, float motorSpeed, bool enableLimit, float lowerLimit, float upperLimit)
+{
+	setJointType(type);
+
+	b2Body* firstBrick = models[firstModel].getBody();
+	b2Body* secondBrick = models[secondModel].getBody();
+
+	b2Vec2 firstBrickAnchor = firstBrick->GetWorldCenter();
+
+	b2Vec2 worldAxis = axis;
+
+	prismaticJointDef.enableMotor = enableMotor;
+	prismaticJointDef.maxMotorForce = maxForce;
+	prismaticJointDef.motorSpeed = motorSpeed;
+
+	prismaticJointDef.enableLimit = enableLimit;
+	prismaticJointDef.lowerTranslation = lowerLimit;
+	prismaticJointDef.upperTranslation = upperLimit;
+
+	prismaticJointDef.Initialize(firstBrick, secondBrick, firstBrickAnchor, worldAxis);
+}
+
 // Rope
 void Joint::setUpJoint(std::vector<Model> models, int firstModel, int secondModel, float maxLength, Side side, JointType type)
 {

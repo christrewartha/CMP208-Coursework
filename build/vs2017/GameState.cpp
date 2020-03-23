@@ -69,7 +69,7 @@ void GameState::init(gef::Platform& platform_)
 	prismaticBrickJointDef.setUpJoint(models, 48, 51, b2Vec2(0.0f, -1.0f), Joint::PRISMATIC);
 	prismaticBrickJoint = (b2PrismaticJoint*)world_->CreateJoint(&prismaticBrickJointDef.getPrismaticJointDef());
 
-	prismaticLiftJointDef.setUpJoint(models, 82, 56, b2Vec2(0.0f, 1.0f), Joint::PRISMATIC);
+	prismaticLiftJointDef.setUpJoint(models, 82, 56, b2Vec2(0.0f, 1.0f), Joint::PRISMATIC, true, 1000.0f, 10.0f, true, -5.0f, 8.0f);
 	prismaticLiftJoint = (b2PrismaticJoint*)world_->CreateJoint(&prismaticLiftJointDef.getPrismaticJointDef());
 
 	ropePlatformOneLeftJointDef.setUpJoint(models, 57, 62, 11.5f, Joint::LEFT, Joint::ROPE);
@@ -182,51 +182,54 @@ void GameState::setUpJoints()
 	// Prismatic joint for lift
 
 	// switch these around pls
-	/*body1 = models[56].getBody();
-	body2 = models[82].getBody();
+	b2Body* body1 = models[56].getBody();
+	b2Body* body2 = models[82].getBody();
 
-	anchor1 = body1->GetWorldCenter();
-	anchor2 = body2->GetWorldCenter();
+	b2Vec2 anchor1 = body1->GetWorldCenter();
+	b2Vec2 anchor2 = body2->GetWorldCenter();
 
 	
 	b2Vec2 liftAxis(0.0f, 1.0f); 
 	
+	b2PrismaticJointDef liftPrismaticJointDef;
+
 	liftPrismaticJointDef.enableMotor = true;
 	liftPrismaticJointDef.maxMotorForce = 1000.0f;
 	liftPrismaticJointDef.motorSpeed = 10.f;
 
 	liftPrismaticJointDef.enableLimit = true;
 	liftPrismaticJointDef.lowerTranslation = -5.0f;
-	liftPrismaticJointDef.upperTranslation = 8.0f;*/
+	liftPrismaticJointDef.upperTranslation = 8.0f;
 
-	//liftPrismaticJointDef.Initialize(body1, body2, anchor2, liftAxis);
+	liftPrismaticJointDef.Initialize(body1, body2, anchor2, liftAxis);
 
-	//liftPrismaticJoint = (b2PrismaticJoint*) world_->CreateJoint(&liftPrismaticJointDef);
+	b2PrismaticJoint* liftPrismaticJoint;
+	liftPrismaticJoint = (b2PrismaticJoint*) world_->CreateJoint(&liftPrismaticJointDef);
 
 
 
 
-	// Rope joint
+	//// Rope joint
 
-	b2Body* body1 = models[57].getBody(); // Platform 1
-	b2Body* body2 = models[62].getBody(); // Roof
+	//b2Body* body1 = models[57].getBody(); // Platform 1
+	//b2Body* body2 = models[62].getBody(); // Roof
 
-	b2RopeJointDef ropeJointDef;
+	//b2RopeJointDef ropeJointDef;
 
-	ropeJointDef.bodyA = body1; // Platform
-	ropeJointDef.bodyB = body2; // Roof
+	//ropeJointDef.bodyA = body1; // Platform
+	//ropeJointDef.bodyB = body2; // Roof
 
-	float diff = body2->GetPosition().x - body1->GetPosition().x; // Difference from center of roof to body
+	//float diff = body2->GetPosition().x - body1->GetPosition().x; // Difference from center of roof to body
 
-	ropeJointDef.localAnchorA = b2Vec2(-3.0f, 0.5f); // Slightly left of center x of body
-	ropeJointDef.localAnchorB =  b2Vec2(abs(diff) - 3.0f, 0.0f); // Slightly left of point above body on roof
-	ropeJointDef.maxLength = 11.5f;
+	//ropeJointDef.localAnchorA = b2Vec2(-3.0f, 0.5f); // Slightly left of center x of body
+	//ropeJointDef.localAnchorB =  b2Vec2(abs(diff) - 3.0f, 0.0f); // Slightly left of point above body on roof
+	//ropeJointDef.maxLength = 11.5f;
 
-	b2RopeJoint* ropeJointA = (b2RopeJoint*) world_->CreateJoint(&ropeJointDef);
+	//b2RopeJoint* ropeJointA = (b2RopeJoint*) world_->CreateJoint(&ropeJointDef);
 
-	ropeJointDef.localAnchorA = b2Vec2(0.0f, 0.5f); // Slightly right of center x of body
-	ropeJointDef.localAnchorB = b2Vec2(abs(diff), 0.0f); // Slightly right of point above body on roof
-	b2RopeJoint* ropeJointB = (b2RopeJoint*) world_->CreateJoint(&ropeJointDef);
+	//ropeJointDef.localAnchorA = b2Vec2(0.0f, 0.5f); // Slightly right of center x of body
+	//ropeJointDef.localAnchorB = b2Vec2(abs(diff), 0.0f); // Slightly right of point above body on roof
+	//b2RopeJoint* ropeJointB = (b2RopeJoint*) world_->CreateJoint(&ropeJointDef);
 
 
 	//b2Body* body3 = models[58].getBody();
@@ -315,11 +318,11 @@ void GameState::UpdateSimulation(float frame_time)
 		}
 	}
 
-	/*if (liftTimer.GetMilliseconds() / 1000 > 3.0f)
+	if (liftTimer.GetMilliseconds() / 1000 > 3.0f)
 	{
-		liftPrismaticJoint->SetMotorSpeed(liftPrismaticJoint->GetMotorSpeed() * -1);
+		prismaticLiftJoint->SetMotorSpeed(prismaticLiftJoint->GetMotorSpeed() * -1);
 		liftTimer.Reset();
-	}*/
+	}
 
 
 

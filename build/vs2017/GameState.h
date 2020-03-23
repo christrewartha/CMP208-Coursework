@@ -67,7 +67,7 @@ private:
 	std::vector<Model> models;
 
 	const float CAMERA_OFFSET_Y = 10.0f;
-	const float CAMERA_OFFSET_Z = 60.0f; // should be 20
+	const float CAMERA_OFFSET_Z = 20.0f; // should be 20
 
 	ContactManager contactManager;
 
@@ -75,6 +75,8 @@ private:
 
 	b2Timer crateTimer;
 	bool crateTimerStarted;
+
+	b2Timer liftTimer;
 
 	PrimitiveBuilder* primitiveBuilderTest;
 
