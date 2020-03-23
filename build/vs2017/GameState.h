@@ -14,7 +14,7 @@
 #include "Parser.h"
 #include "Player.h"
 #include "ContactManager.h"
-#include "box2d/box2d.h"
+#include "Joint.h"
 #include <graphics/sprite.h>
 
 
@@ -76,26 +76,22 @@ private:
 	b2Timer crateTimer;
 	bool crateTimerStarted;
 
-	b2PrismaticJoint* liftPrismaticJoint;
-	b2PrismaticJointDef liftPrismaticJointDef;
-
-	b2RopeJoint* ropeJointA;
-	b2RopeJoint* ropeJointB;
-	b2RopeJoint* ropeJointC;
-	b2RopeJoint* ropeJointD;
-	
-	b2Timer liftTimer;
-
-	b2Vec2 coordsA;
-	b2Vec2 coordsB;
-	b2Vec2 coordsC;
-	b2Vec2 coordsD;
-
-	GameObject pointA;
-	GameObject pointB;
-	GameObject pointC;
-	GameObject pointD;
-
 	PrimitiveBuilder* primitiveBuilderTest;
+
+	Joint pulleyBrickJointDef;
+	Joint prismaticBrickJointDef;
+	Joint prismaticLiftJointDef;
+	Joint ropePlatformOneLeftJointDef;
+	Joint ropePlatformOneRightJointDef;
+	Joint ropePlatformTwoLeftJointDef;
+	Joint ropePlatformTwoRightJointDef;
+
+	b2PulleyJoint* pulleyBrickJoint;
+	b2PrismaticJoint* prismaticBrickJoint;
+	b2PrismaticJoint* prismaticLiftJoint;
+	b2RopeJoint* ropePlatformOneLeftJoint;
+	b2RopeJoint* ropePlatformOneRightJoint;
+	b2RopeJoint* ropePlatformTwoLeftJoint;
+	b2RopeJoint* ropePlatformTwoRightJoint;
 };
 

@@ -53,6 +53,7 @@ public:
 
 	void setUpJoints();
 	b2Body* getBody();
+	gef::Vector4 getScale();
 	
 
 private:

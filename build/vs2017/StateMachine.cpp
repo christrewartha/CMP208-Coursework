@@ -28,7 +28,7 @@ void StateMachine::init(gef::Platform& platform)
 
 	menuState->init(platform);
 	gameState->init(platform);
-	gameLoader->init(platform);
+	//gameLoader->init(platform);
 }
 
 void StateMachine::update(float frame_time, gef::InputManager* input_manager_)

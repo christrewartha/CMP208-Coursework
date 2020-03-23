@@ -226,6 +226,7 @@
     <ClCompile Include="ContactManager.cpp" />
     <ClCompile Include="GameLoader.cpp" />
     <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="Joint.cpp" />
     <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="Parser.cpp" />
@@ -241,6 +242,7 @@
     <ClInclude Include="ContactManager.h" />
     <ClInclude Include="GameLoader.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="Joint.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="MenuState.h" />
     <ClInclude Include="Model.h" />

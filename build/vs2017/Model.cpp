@@ -495,3 +495,8 @@ b2Body* Model::getBody()
 {
 	return body;
 }
+
+gef::Vector4 Model::getScale()
+{
+	return scale;
+}
