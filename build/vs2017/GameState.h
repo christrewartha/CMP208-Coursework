@@ -71,7 +71,12 @@ private:
 
 	std::set<b2Body*> destroyList;
 
-	b2Timer timer;
-	bool timerStarted;
+	b2Timer crateTimer;
+	bool crateTimerStarted;
+
+	b2PrismaticJoint* liftPrismaticJoint;
+	b2PrismaticJointDef liftPrismaticJointDef;
+	
+	b2Timer liftTimer;
 };
 

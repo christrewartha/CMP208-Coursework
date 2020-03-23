@@ -54,7 +54,7 @@ void GameState::init(gef::Platform& platform_)
 
 	player_.init(platform_, world_);
 
-	timerStarted = false;
+	crateTimerStarted = false;
 }
 
 void GameState::update(float frame_time, gef::InputManager* input_manager_, StateMachine* stateMachine)
@@ -112,7 +112,7 @@ void GameState::render(gef::SpriteRenderer* sprite_renderer_, gef::Font* font_, 
 
 	font_->RenderText(sprite_renderer_, gef::Vector4(0, 15, -0.9f), 1.0f, 0xffffffff, gef::TJ_LEFT, "Impulse: %f", player_.getImpulse());
 
-	font_->RenderText(sprite_renderer_, gef::Vector4(400, 0, -0.9f), 1.0f, 0xffffffff, gef::TJ_LEFT, "Timer:  %.3f", timer.GetMilliseconds() / 1000);
+	font_->RenderText(sprite_renderer_, gef::Vector4(400, 0, -0.9f), 1.0f, 0xffffffff, gef::TJ_LEFT, "Timer:  %.3f", crateTimer.GetMilliseconds() / 1000);
 
 	sprite_renderer_->End();
 }
@@ -144,7 +144,9 @@ void GameState::setUpJoints()
 	b2Vec2 groundAnchor2(body2->GetPosition().x, 26.25f);
 
 	b2PulleyJointDef pulleyJointDef;
-	pulleyJointDef.Initialize(body1, body2, groundAnchor1, groundAnchor2, anchor1, anchor2, 1.0f);
+	pulleyJointDef.lengthA = 1;
+	pulleyJointDef.lengthB = 1;
+	pulleyJointDef.Initialize(body1, body2, groundAnchor1, groundAnchor2, anchor1, anchor2, 0.75f);
 
 	world_->CreateJoint(&pulleyJointDef);
 
@@ -152,16 +154,34 @@ void GameState::setUpJoints()
 	// Prismatic joint for left brick
 
 	b2PrismaticJointDef prismaticJointDef;
-	b2Vec2 worldAxis(0.0f, 1.0f);
+	b2Vec2 worldAxis(0.0f, -1.0f);
 	prismaticJointDef.Initialize(body1, body2, anchor1, worldAxis);
-	prismaticJointDef.lowerTranslation = -5.0f;
-	prismaticJointDef.upperTranslation = 2.5f;
-	prismaticJointDef.enableLimit = true;
-	prismaticJointDef.maxMotorForce = 1.0f;
-	prismaticJointDef.motorSpeed = 0.0f;
-	prismaticJointDef.enableMotor = true;
 
 	world_->CreateJoint(&prismaticJointDef);
+
+
+	// Prismatic joint for lift
+
+	body1 = models[56].getBody();
+	body2 = models[82].getBody();
+
+	anchor1 = body1->GetWorldCenter();
+	anchor2 = body2->GetWorldCenter();
+
+	
+	b2Vec2 liftAxis(0.0f, 1.0f); 
+	
+	liftPrismaticJointDef.enableMotor = true;
+	liftPrismaticJointDef.maxMotorForce = 1000.0f;
+	liftPrismaticJointDef.motorSpeed = 10.f;
+
+	liftPrismaticJointDef.enableLimit = true;
+	liftPrismaticJointDef.lowerTranslation = -5.0f;
+	liftPrismaticJointDef.upperTranslation = 8.0f;
+
+	liftPrismaticJointDef.Initialize(body1, body2, anchor2, liftAxis);
+
+	liftPrismaticJoint = (b2PrismaticJoint*) world_->CreateJoint(&liftPrismaticJointDef);
 }
 
 void GameState::SetupLights()
@@ -194,13 +214,13 @@ void GameState::UpdateSimulation(float frame_time)
 	{
 		destroyList = contactManager.getDestroyList();
 
-		if (!timerStarted)
+		if (!crateTimerStarted)
 		{
-			timer.Reset();
-			timerStarted = true;
+			crateTimer.Reset();
+			crateTimerStarted = true;
 		}
 
-		if (timer.GetMilliseconds() / 1000 > 3.0f)
+		if (crateTimer.GetMilliseconds() / 1000 > 3.0f)
 		{
 
 			for (auto it = destroyList.begin(); it != destroyList.end();)
@@ -215,7 +235,7 @@ void GameState::UpdateSimulation(float frame_time)
 				}
 			}
 
-			timerStarted = false;
+			crateTimerStarted = false;
 		}
 	}
 
@@ -229,6 +249,14 @@ void GameState::UpdateSimulation(float frame_time)
 			models[i].update();
 		}
 	}
+
+	if (liftTimer.GetMilliseconds() / 1000 > 3.0f)
+	{
+		liftPrismaticJoint->SetMotorSpeed(liftPrismaticJoint->GetMotorSpeed() * -1);
+		liftTimer.Reset();
+	}
+
+
 
 	// don't have to update the ground visuals as it is static
 

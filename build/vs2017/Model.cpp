@@ -252,6 +252,16 @@ void Model::setCollider(b2World* world)
 			shouldUpdate = true;
 		}
 
+		else if (number == 56)
+		{
+			bodyDef.type = b2_dynamicBody;
+			bodyDef.position = b2Vec2(position.x(), position.y());
+			bodyDef.angle = gef::RadToDeg(0.0f);
+			body = world->CreateBody(&bodyDef);
+
+			shouldUpdate = true;
+		}
+
 		else
 		{
 			bodyDef.type = b2_staticBody;
@@ -306,7 +316,7 @@ void Model::setCollider(b2World* world)
 		body->CreateFixture(&fixtureDef);
 
 		// Create sensor
-		shape.SetAsBox(size.x() / 2.5f, size.y() / 4, b2Vec2(size.x() / 4, size.y() / 1.5), 0.0f);
+		shape.SetAsBox(size.x() / 2.f, size.y() / 4.0f, b2Vec2(0.0f, size.y() / 1.5), 0.0f);
 		fixtureDef.isSensor = true;
 		body->CreateFixture(&fixtureDef);
 
