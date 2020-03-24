@@ -1009,17 +1009,17 @@ SizeZ: 1
 -
 ObjectNumber: 63
 ObjectName: Terrain_Grass_Flat
-PositionX: 153.5
-PositionY: 21.1
+PositionX: 178.6
+PositionY: 20.95
 PositionZ: 0
 RotationX: 0
 RotationY: 0
 RotationZ: 0
-ScaleX: -1
-ScaleY: 21.6
+ScaleX: 1
+ScaleY: 22.2
 ScaleZ: 1
 SizeX: 1
-SizeY: 27
+SizeY: 27.75
 SizeZ: 1
 
 -
@@ -1373,4 +1373,201 @@ ScaleZ: 1
 SizeX: 3
 SizeY: 1
 SizeZ: 1
+
+-
+ObjectNumber: 86
+ObjectName: Prop_Block_Play
+PositionX: 158.5
+PositionY: 11.75
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 5
+ScaleY: 1
+ScaleZ: 1
+
+-
+ObjectNumber: 87
+ObjectName: Prop_Block_Play
+PositionX: 160.5
+PositionY: 9.75
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 180
+ScaleX: 5
+ScaleY: 1
+ScaleZ: 1
+
+-
+ObjectNumber: 88
+ObjectName: Prop_Block_Play
+PositionX: 158.5
+PositionY: 5.75
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 15
+ScaleX: 5
+ScaleY: 1
+ScaleZ: 1
+
+-
+ObjectNumber: 89
+ObjectName: Prop_Block_Play
+PositionX: 160.3
+PositionY: 3.5
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 160
+ScaleX: 5
+ScaleY: 1
+ScaleZ: 1
+
+-
+ObjectNumber: 90
+ObjectName: Prop_Block_Play
+PositionX: 158.5
+PositionY: -0.25
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 5
+ScaleY: 1
+ScaleZ: 1
+
+-
+ObjectNumber: 91
+ObjectName: Terrain_Path_Flat
+PositionX: 164.5
+PositionY: 0.75
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 7.25
+ScaleY: 1
+ScaleZ: 1
+SizeX: 7.25
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 92
+ObjectName: Terrain_Path_Flat
+PositionX: 165.55
+PositionY: -0.25
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 25.1
+ScaleY: 1
+ScaleZ: 1
+SizeX: 25.1
+SizeY: 1
+SizeZ: 1
+
+-
+ObjectNumber: 93
+ObjectName: Terrain_Grass_Flat
+PositionX: 165.5
+PositionY: 20.55
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 5
+ScaleY: 18.8
+ScaleZ: 1
+SizeX: 5
+SizeY: 23.5
+SizeZ: 1
+
+-
+ObjectNumber: 94
+ObjectName: Prop_Block_Exclamation_Point
+PositionX: 163.5
+PositionY: 0.75
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 1
+ScaleY: 1
+ScaleZ: 1
+
+-
+ObjectNumber: 95
+ObjectName: Terrain_Grass_Flat
+PositionX: 175.6
+PositionY: 9.75
+PositionZ: 0
+RotationX: 0
+RotationY: 0
+RotationZ: 0
+ScaleX: 5
+ScaleY: 10
+ScaleZ: 1
+SizeX: 5
+SizeY: 12.5
+SizeZ: 1
+
+-
+ObjectNumber: 96
+ObjectName: Terrain_Grass_Flat
+PositionX: 166.5
+PositionY: 26.25
+PositionZ: 0
+RotationX: 0
+RotationY: -9.659346E-06
+RotationZ: 0
+ScaleX: 27
+ScaleY: 1
+ScaleZ: 1
+SizeX: 27
+SizeY: 1.25
+SizeZ: 1.000005
+
+-
+ObjectNumber: 97
+ObjectName: Prop_Button
+PositionX: 171.15
+PositionY: -0.25
+PositionZ: 0
+RotationX: 0
+RotationY: -9.659346E-06
+RotationZ: 0
+ScaleX: 5
+ScaleY: 2.5
+ScaleZ: 1
+
+-
+ObjectNumber: 98
+ObjectName: Terrain_Water
+PositionX: 127
+PositionY: 0.6
+PositionZ: 0
+RotationX: 0
+RotationY: -9.659346E-06
+RotationZ: 0
+ScaleX: 10
+ScaleY: 1
+ScaleZ: 0.25
+
+-
+ObjectNumber: 99
+ObjectName: Terrain_Water
+PositionX: 154.5
+PositionY: -0.2
+PositionZ: 0
+RotationX: 0
+RotationY: -9.659346E-06
+RotationZ: 0
+ScaleX: 0.6
+ScaleY: 1
+ScaleZ: 0.25
 
