@@ -100,7 +100,7 @@ void Player::handleInput(float frame_time, gef::InputManager* input_manager_)
 {
 	if (input_manager_->keyboard()->IsKeyDown(gef::Keyboard::KC_W) && footContacts > 0)
 	{
-		player_body_->ApplyLinearImpulseToCenter(b2Vec2(0.0f, currentImpulse), true);
+		player_body_->ApplyLinearImpulse(b2Vec2(0.0f, currentImpulse), b2Vec2(0.0f,0.0f), true);
 
 		currentImpulse += 1.0f;
 

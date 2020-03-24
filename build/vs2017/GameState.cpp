@@ -1,5 +1,5 @@
 #include "GameState.h"
-
+#include <graphics/mesh.h>
 
 GameState::GameState() :
 	world_(NULL)	
